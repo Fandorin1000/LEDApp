@@ -1,8 +1,10 @@
 .stripsContainerBox {
   display: flex;
   justify-content: space-around;
+  flex-wrap: wrap;
 
   a {
+    margin: 10px;
     transition: .3s all ease-out;
     text-decoration: none;
     box-shadow: 0 0 2px black;

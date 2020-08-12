@@ -1,7 +1,7 @@
 import React from 'react';
 import classes from './Strip.module.scss';
 import { withRouter } from 'react-router';
-import Spinner from '../UI/Spinner';
+import Spinner from '../UI/Spinner/Spinner';
 import Auxiliary from '../../hoc/Auxiliary';
 
 const Strip = props => {

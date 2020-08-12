@@ -3,7 +3,7 @@ import classes from './StripsContainer.module.scss';
 import * as actions from '../../store/actions/index';
 import { connect } from 'react-redux';
 import StripsElement from '../../components/StripsElement/StripsElement';
-import Spinner from '../../components/UI/Spinner';
+import Spinner from '../../components/UI/Spinner/Spinner';
 import { NavLink, withRouter } from 'react-router-dom';
 import { compose } from 'redux';
 

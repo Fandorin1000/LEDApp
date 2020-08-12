@@ -16,6 +16,9 @@ class App extends Component {
             <Route
               path={`/strip/:stripId?`}
               component={StripContainer} />
+            <Route
+              path={`/about`}
+              render={() => <div>About</div>} />
             <Route exact path="/" component={StripsContainer} />
           </Switch>
         </div>
