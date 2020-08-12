@@ -1,0 +1,20 @@
+.stripsElementBox {
+
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  max-width: 320px;
+
+  img {
+    width: 100%;
+    height: auto;
+  }
+
+  .stripsElementFooter {
+    padding: 0 5px 5px 5px;
+
+    h4 {
+      margin: 0;
+    }
+  }
+}

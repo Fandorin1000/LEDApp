@@ -1,0 +1,16 @@
+.stripsContainerBox {
+  display: flex;
+  justify-content: space-around;
+
+  a {
+    transition: .3s all ease-out;
+    text-decoration: none;
+    box-shadow: 0 0 2px black;
+
+    &:hover {
+      transform: scale(1.01);
+
+      box-shadow: 0 0 5px black;
+    }
+  }
+}
