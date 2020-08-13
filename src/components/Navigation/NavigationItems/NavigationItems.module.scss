@@ -1,3 +1,16 @@
 .navigationItems {
   list-style: none;
+  display: flex;
+  justify-content: space-around;
+  width: 50%;
+}
+
+@media screen and (max-width:1024px) {
+  .navigationItems {
+    display: none;
+  }
+}
+
+.navigationItems .inSideDrawerShow {
+  display: block;
 }

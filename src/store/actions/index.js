@@ -7,5 +7,8 @@ export {
   toggleIsLoading,
   clearError,
   setError,
-  toggleIsWaitGetStrip
+  toggleIsWaitGetStrip,
+  toggleIsShowBackdrop,
+  openSideDrawer,
+  toggleIsShowSideDrawer
 } from './UIAction';

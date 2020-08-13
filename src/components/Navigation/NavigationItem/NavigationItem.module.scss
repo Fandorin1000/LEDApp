@@ -1,3 +1,10 @@
 .navigationLink {
   text-decoration: none;
+  color: #00AFE2;
+  transition: all 0.3s ease-out;
+
+  &:hover,
+  &:focus {
+    color: #005573;
+  }
 }
