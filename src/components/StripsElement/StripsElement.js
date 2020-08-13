@@ -4,6 +4,7 @@ import Auxiliary from '../../hoc/Auxiliary';
 
 const StripsElement = props => {
   const element = props;
+
   const strip = (
     <Auxiliary>
       <div className={classes.stripsElementHead}>
@@ -17,7 +18,6 @@ const StripsElement = props => {
         <div><span>Код товара {element.code}</span></div>
         <div><span>Цена {element.price} грн. за 1 метр</span></div>
       </div>
-
     </Auxiliary>
   )
   return (

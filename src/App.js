@@ -12,11 +12,11 @@ import { connect } from 'react-redux';
 class App extends Component {
   constructor(props) {
     super(props);
-    this.toggleIsShowBackdropHandler = this.toggleIsShowBackdropHandler.bind(this)
+    this.closeAllModalsHandler = this.closeAllModalsHandler.bind(this)
   }
-  toggleIsShowBackdropHandler = status => {
-    const { onToggleIsShowBackdrop } = this.props;
-    onToggleIsShowBackdrop(status)
+  closeAllModalsHandler = () => {
+    const { onCloseAllModals } = this.props;
+    onCloseAllModals()
   }
   render() {
     const { isShowBackdrop } = this.props;
@@ -24,7 +24,7 @@ class App extends Component {
       <div className={classes.app}>
         <Backdrop
           isShowBackdrop={isShowBackdrop}
-          clicked={() => this.toggleIsShowBackdropHandler(false)}
+          clicked={this.closeAllModalsHandler}
         />
         <HeadContainer />
         <div className={classes.main}>
@@ -53,7 +53,7 @@ const mapStateToProps = state => ({
   isShowBackdrop: state.UIPage.isShowBackdrop
 })
 const mapDispatchToProps = dispatch => ({
-  onToggleIsShowBackdrop: (status) => dispatch(actions.toggleIsShowBackdrop(status))
+  onCloseAllModals: () => dispatch(actions.closeAllModals())
 })
 export default compose(
   connect(mapStateToProps, mapDispatchToProps),

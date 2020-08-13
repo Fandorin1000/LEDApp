@@ -5,12 +5,17 @@ import NavigationItems from '../NavigationItems/NavigationItems';
 
 const SideDrawer = props => {
   const { isShowSideDrawer } = props;
-  const cssClasses = [classes.sideDrawer,
-  isShowSideDrawer && classes.isOpenSideDrawer
+  const cssClasses = [
+    classes.sideDrawer,
+    isShowSideDrawer && classes.isOpenSideDrawer
   ]
 
-  return <div className={cssClasses.join(' ')}>
+  return <div
+    onClick={props.clicked}
+    className={cssClasses.join(' ')
+    }>
     <NavigationItems>
+      <NavigationItem link="/">Главная</NavigationItem>
       <NavigationItem link="/About">О компании</NavigationItem>
       <NavigationItem link="/Contacts">Контакты</NavigationItem>
       <NavigationItem link="/Delivery">Доставка</NavigationItem>

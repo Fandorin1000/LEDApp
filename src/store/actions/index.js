@@ -10,5 +10,6 @@ export {
   toggleIsWaitGetStrip,
   toggleIsShowBackdrop,
   openSideDrawer,
-  toggleIsShowSideDrawer
+  toggleIsShowSideDrawer,
+  closeAllModals
 } from './UIAction';

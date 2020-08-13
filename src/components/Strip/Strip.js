@@ -39,7 +39,6 @@ const Strip = props => {
             <div className={classes.controlsBoxPrice}>
               <span>Цена: {strip.price} грн. за 1 метр </span>
             </div>
-
             <div className={classes.controlsBoxButton}>
               <button>Добавить в корзину</button>
             </div>

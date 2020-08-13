@@ -18,9 +18,12 @@ class HeadContainer extends Component {
     const { history } = this.props;
     history.push("/")
   }
-  openSideDrawerHandler = () => {
-    const { onOpenSideDrawer } = this.props
-    onOpenSideDrawer()
+  openSideDrawerHandler = (param) => {
+    const { onOpenSideDrawerHandler } = this.props
+    onOpenSideDrawerHandler(param)
+  }
+  closeAllModalHandler = () => {
+    this.props.onCloseAllModals()
   }
   render() {
     const { isShowSideDrawer } = this.props
@@ -35,12 +38,13 @@ class HeadContainer extends Component {
             alt="led-stil logo elephant" />
         </div>
         <DrawerToggle clicked={this.openSideDrawerHandler} />
-        <NavigationItems>
+        <NavigationItems isShowSideDrawer={isShowSideDrawer}>
           <NavigationItem link="/About">О компании</NavigationItem>
           <NavigationItem link="/Contacts">Контакты</NavigationItem>
           <NavigationItem link="/Delivery">Доставка</NavigationItem>
         </NavigationItems>
         <SideDrawer
+          clicked={this.closeAllModalHandler}
           isShowSideDrawer={isShowSideDrawer}
         />
       </div>
@@ -51,7 +55,8 @@ const mapStateToProps = state => ({
   isShowSideDrawer: state.UIPage.isShowSideDrawer
 })
 const mapDispatchToProps = dispatch => ({
-  onOpenSideDrawer: () => dispatch(actions.openSideDrawer())
+  onOpenSideDrawerHandler: () => dispatch(actions.openSideDrawer()),
+  onCloseAllModals: () => dispatch(actions.closeAllModals())
 })
 export default compose(
   connect(mapStateToProps, mapDispatchToProps),
