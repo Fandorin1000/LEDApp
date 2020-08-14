@@ -42,6 +42,7 @@ class HeadContainer extends Component {
           <NavigationItem link="/About">О компании</NavigationItem>
           <NavigationItem link="/Contacts">Контакты</NavigationItem>
           <NavigationItem link="/Delivery">Доставка</NavigationItem>
+          <NavigationItem link="/Bag">Корзина</NavigationItem>
         </NavigationItems>
         <SideDrawer
           clicked={this.closeAllModalHandler}

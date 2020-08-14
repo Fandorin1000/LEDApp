@@ -7,13 +7,11 @@ import Auxiliary from '../../hoc/Auxiliary';
 const Strip = props => {
 
   const { isWaitGetStrip, strip } = props;
-  console.log(strip);
   let currentStrip = null;
   if (isWaitGetStrip) {
     currentStrip = <Spinner />
   }
   if (strip && !isWaitGetStrip) {
-    console.log(strip.characteristics);
     currentStrip = (
       <Auxiliary>
         <div className={classes.stripHeadBox}>
@@ -40,7 +38,7 @@ const Strip = props => {
               <span>Цена: {strip.price} грн. за 1 метр </span>
             </div>
             <div className={classes.controlsBoxButton}>
-              <button>Добавить в корзину</button>
+              <button onClick={() => props.clickedBtn(strip)}>Добавить в корзину</button>
             </div>
           </div>
         </div>
@@ -65,7 +63,6 @@ const Strip = props => {
             <div><span>Световой поток:</span> <span>{strip.characteristics.lightflow} люмен</span></div>
             <div><span>Светоотдача:</span> <span>{strip.characteristics.lightoutput} люмен/ват</span></div>
             <div><span>Рабочее напряжение:</span> <span>{strip.characteristics.power} вольт</span></div>
-
           </div>
         </div>
       </Auxiliary>

@@ -13,3 +13,7 @@ export {
   toggleIsShowSideDrawer,
   closeAllModals
 } from './UIAction';
+
+export {
+  addToBagProductStart
+} from './bagAction';

@@ -8,13 +8,15 @@ import thunk from 'redux-thunk';
 import { Provider } from 'react-redux';
 import stripsReducer from './store/reducers/stripsReducer';
 import UIReducer from './store/reducers/UIReducer';
+import bagReducer from './store/reducers/bagReducer';
 import { createStore, applyMiddleware, compose, combineReducers } from 'redux';
 
 const composeEnhancers = process.env.NODE_ENV === 'development' ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ : (null || compose);
 
 const rootReducer = combineReducers({
   stripsPage: stripsReducer,
-  UIPage: UIReducer
+  UIPage: UIReducer,
+  bagPage: bagReducer
 })
 const store = createStore(rootReducer, composeEnhancers(applyMiddleware(thunk)))
 

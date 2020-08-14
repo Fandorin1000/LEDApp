@@ -10,3 +10,6 @@ export const TOGGLE_IS_SHOW_SIDE_DRAWER = "UIPage/TOGGLE_IS_SHOW_SIDE_DRAWER";
 //STRIPS PAGE
 export const SET_STRIPS = "stripsPage/SET_STRIPS";
 export const SET_STRIP = "stripsPage/SET_STRIP";
+
+//BAG PAGE
+export const ADD_TO_BAG_PRODUCT = "bagPage/ADD_TO_BAG_PRODUCT"

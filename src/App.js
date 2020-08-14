@@ -9,6 +9,7 @@ import Backdrop from './components/UI/Backdrop/Backdrop';
 import * as actions from './store/actions/index';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
+import BagContainer from './containers/BagContainer/BagContainer';
 class App extends Component {
   constructor(props) {
     super(props);
@@ -30,17 +31,20 @@ class App extends Component {
         <div className={classes.main}>
           <Switch>
             <Route
-              path={`/strip/:stripId?`}
+              path="/strip/:stripId?"
               component={StripContainer} />
             <Route
-              path={`/about`}
+              path="/about"
               render={() => <div>About</div>} />
             <Route
-              path={`/contacts`}
+              path="/contacts"
               render={() => <div>Contacts</div>} />
             <Route
-              path={`/delivery`}
+              path="/delivery"
               render={() => <div>Delivery</div>} />
+            <Route
+              path="/bag"
+              component={BagContainer} />
             <Route exact path="/" component={StripsContainer} />
           </Switch>
         </div>

@@ -10,7 +10,6 @@ export const getStripsRequest = () => async dispatch => {
   await dispatch(actions.toggleIsLoading(true))
   try {
     const response = await stripsAPI.getStrips()
-    console.log(response)
     await dispatch(getStripsRequestSuccess(response))
     dispatch(actions.toggleIsLoading(false))
   } catch (error) {
@@ -26,7 +25,6 @@ export const getStripRequest = id => async dispatch => {
     const response = await stripsAPI.getStrip(id)
     await dispatch(getStripRequestSuccess(response))
     await dispatch(actions.toggleIsWaitGetStrip(false));
-    console.log(response);
   } catch (error) {
     await dispatch(actions.toggleIsWaitGetStrip(false));
     await dispatch(actions.setError(error.message))

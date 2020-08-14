@@ -15,7 +15,7 @@ const toggleIsScrollActive = (isShow) => {
     body.style.overflow = "auto"
 }
 
-//export const openSideDrawer = () => ({ type: actionTypes.OPEN_SIDE_DRAWER})
+
 export const closeAllModals = () => async dispatch => {
   try {
     await toggleIsScrollActive(false);

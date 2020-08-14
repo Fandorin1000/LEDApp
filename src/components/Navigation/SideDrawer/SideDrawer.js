@@ -16,10 +16,12 @@ const SideDrawer = props => {
     }>
     <NavigationItems>
       <NavigationItem link="/">Главная</NavigationItem>
-      <NavigationItem link="/About">О компании</NavigationItem>
-      <NavigationItem link="/Contacts">Контакты</NavigationItem>
-      <NavigationItem link="/Delivery">Доставка</NavigationItem>
+      <NavigationItem link="/about">О компании</NavigationItem>
+      <NavigationItem link="/contacts">Контакты</NavigationItem>
+      <NavigationItem link="/delivery">Доставка</NavigationItem>
+      <NavigationItem link="/bag">Корзина</NavigationItem>
     </NavigationItems>
+
   </div>
 }
 export default SideDrawer;
