@@ -10,6 +10,9 @@ const Bag = props => {
   console.log(bagArray)
   const productsRender = sortedBagArray.map(element => (
     <div key={element.id} className={classes.bagElement}>
+      <div
+        onClick={() => props.deleteFromBag(element.id)}
+        className={classes.deleteElementBox}>X</div>
       <div><h2>{element.name}</h2></div>
       <div className={classes.bagElementBtn}>
         <button onClick={() => props.decreased(element.id, element.price, element.currentPrice)}>-</button>
@@ -22,7 +25,10 @@ const Bag = props => {
     </div>
   ));
   if (sortedBagArray.length <= 0) {
-    bag = <p>Корзина пуста!</p>
+    bag = <div className={classes.clearBagBox}>
+      <div><span>Корзина пуста!</span></div>
+      <div><NavLink to="/">Нажмите здесь чтоб перейти на главную!</NavLink></div>
+    </div>
   } else if (sortedBagArray.length > 0) {
     bag = productsRender
     sum = sortedBagArray.reduce((accumulator, currentElement) => accumulator + currentElement.currentPrice, 0)
@@ -32,7 +38,7 @@ const Bag = props => {
     <div className={classes.bagBox}>
       {bag}
       {sum ? <div className={classes.totalCost}><span>Общая стоимость: <strong>{sum} грн.</strong></span></div> : null}
-      <div><NavLink to="/">Нажмите здесь чтоб перейти на главную!</NavLink></div>
+
     </div>
   );
 }

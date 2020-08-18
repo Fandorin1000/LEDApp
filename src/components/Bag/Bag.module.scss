@@ -3,6 +3,7 @@
   .bagElement {
     display: flex;
     max-width: 100%;
+    position: relative;
 
     div {
       border: 1px solid red;
@@ -40,6 +41,26 @@
       max-width: 100px;
       justify-content: center;
     }
+
+    .deleteElementBox {
+      position: absolute;
+      right: 2px;
+      top: 2px;
+      width: 10px;
+      font-size: 14px;
+      border: 1px solid transparent;
+      font-weight: 900;
+      cursor: pointer;
+      height: 10px;
+      line-height: 0;
+      padding: 0;
+      transition: .3s all ease-out;
+      color: red;
+
+      &:hover {
+        color: blue
+      }
+    }
   }
 
   .totalCost {
@@ -47,6 +68,19 @@
 
     span {
       min-width: 150px;
+    }
+  }
+
+  .clearBagBox {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    min-height: 300px;
+    text-align: center;
+
+    div {
+      margin: 20px;
     }
   }
 }

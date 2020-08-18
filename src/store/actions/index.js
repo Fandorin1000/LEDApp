@@ -18,5 +18,7 @@ export {
   addToBagProductStart,
   getProductsFromLS,
   increasedMetersAndPrice,
-  decreasedMetersAndPrice
+  decreasedMetersAndPrice,
+  deleteElementFromBag,
+  deleteElementFromBagStart
 } from './bagAction';

@@ -16,19 +16,20 @@ class BagContainer extends Component {
   }
   decreasedMetersAndPriceHandler = (id, price, currentPrice) => {
     if (currentPrice - price - 1 <= 0) {
-      console.log(currentPrice)
-      return
+      this.deleteElementFromBagHandler(id)
     } else {
-      console.log(id, price)
       this.props.onDecreasedMetersAndPrice(id, price)
     }
 
   }
+  deleteElementFromBagHandler = (id) => {
+    this.props.onDeleteElementFromBag(id)
+  }
   render() {
-    console.log('bag container', this.props.bagArray)
     return (
       <div className={classes.bagContainer}>
         <Bag {...this.props}
+          deleteFromBag={(id) => this.deleteElementFromBagHandler(id)}
           increased={(id, price) => this.increasedMetersAndPriceHandler(id, price)}
           decreased={(id, price, currentPrice) => this.decreasedMetersAndPriceHandler(id, price, currentPrice)} />
       </div>
@@ -44,6 +45,7 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
   onGetProductsFromLS: () => dispatch(actions.getProductsFromLS()),
   onIncreasedMetersAndPrice: (id, price) => dispatch(actions.increasedMetersAndPrice(id, price)),
-  onDecreasedMetersAndPrice: (id, price) => dispatch(actions.decreasedMetersAndPrice(id, price))
+  onDecreasedMetersAndPrice: (id, price) => dispatch(actions.decreasedMetersAndPrice(id, price)),
+  onDeleteElementFromBag: (id) => dispatch(actions.deleteElementFromBagStart(id))
 })
 export default connect(mapStateToProps, mapDispatchToProps)(BagContainer);
