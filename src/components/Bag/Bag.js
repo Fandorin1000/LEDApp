@@ -4,27 +4,28 @@ import { NavLink } from 'react-router-dom';
 
 const Bag = props => {
   const { bagArray } = props;
+  const sortedBagArray = bagArray.sort((a, b) => a.id - b.id)
   let bag;
   let sum = 0;
   console.log(bagArray)
-  const productsRender = bagArray.map(element => (
+  const productsRender = sortedBagArray.map(element => (
     <div key={element.id} className={classes.bagElement}>
       <div><h2>{element.name}</h2></div>
-      <div className={classes.bagElementBtn}><button>-</button></div>
-      <div className={classes.bagElementMeters}><span>{element.amount}
-        {element.amount === 1 ? ' метр' :
-          element.amount > 1 ? ' метра' :
-            element.amount > 5 ? ' метров' :
-              null}</span></div>
-      <div className={classes.bagElementBtn}><button>+</button></div>
-      <div className={classes.bagElementPrice}><span>{element.price} грн.</span></div>
+      <div className={classes.bagElementBtn}>
+        <button onClick={() => props.decreased(element.id, element.price, element.currentPrice)}>-</button>
+      </div>
+      <div className={classes.bagElementMeters}><span>{element.amount} метр.</span></div>
+      <div className={classes.bagElementBtn}>
+        <button onClick={() => props.increased(element.id, element.price)}>+</button>
+      </div>
+      <div className={classes.bagElementPrice}><span>{element.currentPrice} грн.</span></div>
     </div>
   ));
-  if (bagArray.length <= 0) {
+  if (sortedBagArray.length <= 0) {
     bag = <p>Корзина пуста!</p>
-  } else if (bagArray.length > 0) {
+  } else if (sortedBagArray.length > 0) {
     bag = productsRender
-    sum = bagArray.reduce((accumulator, currentElement) => accumulator + currentElement.price, 0)
+    sum = sortedBagArray.reduce((accumulator, currentElement) => accumulator + currentElement.currentPrice, 0)
   }
 
   return (

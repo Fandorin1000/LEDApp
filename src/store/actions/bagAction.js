@@ -2,7 +2,8 @@ import * as actionTypes from './actionTypes';
 import * as actions from './index';
 
 export const addToBagProduct = (payload) => ({ type: actionTypes.ADD_TO_BAG_PRODUCT, payload });
-
+export const increasedMetersAndPrice = (id, price) => ({ type: actionTypes.INCREASED_METERS_AND_PRICE, id, price })
+export const decreasedMetersAndPrice = (id, price) => ({ type: actionTypes.DECREASED_METERS_AND_PRICE, id, price })
 
 
 export const addToBagProductStart = (bagArray, product) => async dispatch => {
@@ -35,6 +36,7 @@ export const getProductsFromLS = () => async dispatch => {
     await (dispatch(actions.setError(error.message)))
   }
 }
+
 
 
 
