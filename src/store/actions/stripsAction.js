@@ -5,6 +5,7 @@ import * as actions from './index';
 export const getStripsRequestSuccess = (payload) => ({ type: actionTypes.SET_STRIPS, payload });
 export const getStripRequestSuccess = (payload) => ({ type: actionTypes.SET_STRIP, payload });
 
+
 export const getStripsRequest = () => async dispatch => {
   await dispatch(actions.clearError())
   await dispatch(actions.toggleIsLoading(true))
@@ -22,12 +23,12 @@ export const getStripRequest = id => async dispatch => {
   await dispatch(actions.clearError());
   await dispatch(actions.toggleIsWaitGetStrip(true));
   try {
-    const response = await stripsAPI.getStrip(id)
-    await dispatch(getStripRequestSuccess(response))
+    const response = await stripsAPI.getStrip(id);
+    await dispatch(getStripRequestSuccess(response));
     await dispatch(actions.toggleIsWaitGetStrip(false));
   } catch (error) {
     await dispatch(actions.toggleIsWaitGetStrip(false));
-    await dispatch(actions.setError(error.message))
+    await dispatch(actions.setError(error.message));
   }
 }
 

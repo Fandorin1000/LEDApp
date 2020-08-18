@@ -13,3 +13,4 @@ export const SET_STRIP = "stripsPage/SET_STRIP";
 
 //BAG PAGE
 export const ADD_TO_BAG_PRODUCT = "bagPage/ADD_TO_BAG_PRODUCT"
+export const GET_PRODUCTS_FROM_LS = "bagPage/GET_PRODUCTS_FROM_LS"

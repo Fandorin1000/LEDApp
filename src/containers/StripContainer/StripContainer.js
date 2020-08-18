@@ -10,9 +10,15 @@ class StripContainer extends Component {
   }
   addToBagProductHandler = product => {
     const { bagArray } = this.props;
-    const result = bagArray.map(element => element.id === product.id);
-    console.log('result', result)
-    this.props.onAddToBagProduct(product)
+    let response = null;
+    if (bagArray.length === 0) {
+      this.props.onAddToBagProduct(bagArray, product)
+    } else if (bagArray.length > 0) {
+      const idArray = []
+      bagArray.map(element => idArray.push(element.id));
+      response = idArray.includes(product.id)
+      response ? alert('Товар уже в корзине!') : this.props.onAddToBagProduct(bagArray, product)
+    }
   }
   render() {
     return (
@@ -29,6 +35,6 @@ const mapStateToProps = state => ({
 })
 const mapDispatchToProps = dispatch => ({
   onGetStripRequest: (id) => dispatch(actions.getStripRequest(id)),
-  onAddToBagProduct: (product) => dispatch(actions.addToBagProductStart(product))
+  onAddToBagProduct: (bagArray, product) => dispatch(actions.addToBagProductStart(bagArray, product))
 })
 export default connect(mapStateToProps, mapDispatchToProps)(StripContainer);

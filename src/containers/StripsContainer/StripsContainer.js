@@ -34,6 +34,7 @@ const mapStateToProps = state => ({
   strips: state.stripsPage.strips,
   isLoading: state.UIPage.isLoading
 });
+
 const mapDispatchToProps = dispatch => ({
   onGetStrips: () => dispatch(actions.getStripsRequest())
 })

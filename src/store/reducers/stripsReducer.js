@@ -7,7 +7,7 @@ const initialState = {
 }
 
 const setStrips = (state, action) => updatedObject(state, { strips: action.payload });
-const setStrip = (state, action) => updatedObject(state, { strip: action.payload })
+const setStrip = (state, action) => updatedObject(state, { strip: action.payload });
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {

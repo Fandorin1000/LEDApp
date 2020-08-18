@@ -2,8 +2,14 @@ import React, { Component } from 'react';
 import classes from './BagContainer.module.scss';
 import Bag from '../../components/Bag/Bag';
 import { connect } from 'react-redux';
-
+import * as actions from '../../store/actions/index';
 class BagContainer extends Component {
+  componentDidMount() {
+    const { bagArray } = this.props
+    if (bagArray.length === 0) {
+      this.props.onGetProductsFromLS()
+    }
+  }
   render() {
     console.log('bag container', this.props.bagArray)
     return (
@@ -15,9 +21,11 @@ class BagContainer extends Component {
 }
 
 const mapStateToProps = state => ({
-  bagArray: state.bagPage.bagArray
-})
-// const mapDispatchToProps = dispatch => ({
+  bagArray: state.bagPage.bagArray,
+  isLoading: state.UIPage.isLoading
 
-// })
-export default connect(mapStateToProps)(BagContainer);
+})
+const mapDispatchToProps = dispatch => ({
+  onGetProductsFromLS: () => dispatch(actions.getProductsFromLS())
+})
+export default connect(mapStateToProps, mapDispatchToProps)(BagContainer);

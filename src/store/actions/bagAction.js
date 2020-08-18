@@ -5,14 +5,33 @@ export const addToBagProduct = (payload) => ({ type: actionTypes.ADD_TO_BAG_PROD
 
 
 
-export const addToBagProductStart = product => async dispatch => {
+export const addToBagProductStart = (bagArray, product) => async dispatch => {
+  const bag = [...bagArray];
   const newProduct = {
     ...product,
+    amount: 1
   }
   try {
-    console.log(newProduct)
+    console.log('work')
+    await bag.push(newProduct)
+    await localStorage.setItem('bag', JSON.stringify(bag))
     await dispatch(addToBagProduct(newProduct))
   } catch (error) {
+    await (dispatch(actions.setError(error.message)))
+  }
+}
+
+export const getProductsFromLS = () => async dispatch => {
+  await dispatch(actions.toggleIsLoading(true))
+  try {
+    const bag = JSON.parse(localStorage.getItem('bag'))
+    if (bag) {
+      await dispatch(addToBagProduct(bag))
+      await dispatch(actions.toggleIsLoading(false))
+    }
+    await dispatch(actions.toggleIsLoading(false))
+  } catch (error) {
+    await dispatch(actions.toggleIsLoading(false))
     await (dispatch(actions.setError(error.message)))
   }
 }

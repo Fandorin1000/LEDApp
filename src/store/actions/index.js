@@ -15,5 +15,6 @@ export {
 } from './UIAction';
 
 export {
-  addToBagProductStart
+  addToBagProductStart,
+  getProductsFromLS
 } from './bagAction';

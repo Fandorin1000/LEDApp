@@ -38,7 +38,8 @@ const Strip = props => {
               <span>Цена: {strip.price} грн. за 1 метр </span>
             </div>
             <div className={classes.controlsBoxButton}>
-              <button onClick={() => props.clickedBtn(strip)}>Добавить в корзину</button>
+              <button onClick={() => props.clickedBtn(strip)} disabled={strip.inBag}>
+                Добавить в корзину</button>
             </div>
           </div>
         </div>

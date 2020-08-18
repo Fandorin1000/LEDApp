@@ -1,0 +1,52 @@
+.bagBox {
+
+  .bagElement {
+    display: flex;
+    max-width: 100%;
+
+    div {
+      border: 1px solid red;
+      padding: 5px;
+      width: 100%;
+      white-space: wrap;
+      display: flex;
+      align-items: center;
+
+      h2 {
+        margin: 0;
+        font-size: 14px;
+      }
+    }
+
+    &Meters {
+      max-width: 100px;
+      box-sizing: border-box;
+      justify-content: center;
+    }
+
+    &Btn {
+      max-width: 35px;
+      justify-content: center;
+
+      button {
+        cursor: pointer;
+        width: 25px;
+        height: 25px;
+        padding: 0;
+      }
+    }
+
+    &Price {
+      max-width: 100px;
+      justify-content: center;
+    }
+  }
+
+  .totalCost {
+    text-align: end;
+
+    span {
+      min-width: 150px;
+    }
+  }
+}
