@@ -6,7 +6,8 @@ const initialState = {
   error: null,
   isWaitGetStrip: false,
   isShowBackdrop: null,
-  isShowSideDrawer: false
+  isShowSideDrawer: false,
+  isWaitSort: false
 }
 
 const toggleIsLoading = (state, action) => updatedObject(state, { isLoading: action.payload });
@@ -15,6 +16,7 @@ const clearError = (state) => updatedObject(state, { error: null });
 const toggleIsWaitGetStrip = (state, action) => updatedObject(state, { isWaitGetStrip: action.payload });
 const toggleIsShowBackdrop = (state, action) => updatedObject(state, { isShowBackdrop: action.payload });
 const toggleIsShowSideDrawer = (state, action) => updatedObject(state, { isShowSideDrawer: action.payload });
+const toggleIsWaitSort = (state, action) => updatedObject(state, { isWaitSort: action.payload });
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
@@ -24,6 +26,7 @@ const reducer = (state = initialState, action) => {
     case (actionTypes.TOGGLE_IS_WAIT_GET_STRIP): return toggleIsWaitGetStrip(state, action);
     case (actionTypes.TOGGLE_IS_SHOW_BACKDROP): return toggleIsShowBackdrop(state, action);
     case (actionTypes.TOGGLE_IS_SHOW_SIDE_DRAWER): return toggleIsShowSideDrawer(state, action);
+    case (actionTypes.TOGGLE_IS_WAIT_SORT): return toggleIsWaitSort(state, action);
     default: return state;
   }
 }

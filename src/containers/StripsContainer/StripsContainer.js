@@ -12,8 +12,12 @@ class StripsContainer extends Component {
   componentDidMount() {
     this.props.onGetStrips()
   }
+  sortedStripsStartLowPriceHandler = () => this.props.onSortedStripsStartLowPrice()
+  sortedStripsStartHighPriceHandler = () => this.props.onSortedStripsStartHighPrice()
+  sortedStripsStartHighPowerHandler = () => this.props.onSortedStripsStartHighPower()
+  sortedStripsStartLowPowerHandler = () => this.props.onSortedStripsStartLowPower()
   render() {
-    const { isLoading, strips } = this.props;
+    const { isLoading, strips, isWaitSort } = this.props;
     let stripsElement = null;
     if (isLoading) {
       stripsElement = <Spinner />
@@ -25,18 +29,34 @@ class StripsContainer extends Component {
     }
     return (
       <div className={classes.stripsContainerBox}>
-        {stripsElement}
+        <div className={classes.sortedBox}>
+          <ul>
+            <li onClick={this.sortedStripsStartLowPriceHandler}><span>Сначала дешевле</span></li>
+            <li onClick={this.sortedStripsStartHighPriceHandler}><span>Сначала дороже</span></li>
+            <li onClick={this.sortedStripsStartHighPowerHandler}><span>Сначала мощные</span></li>
+            <li onClick={this.sortedStripsStartLowPowerHandler}><span>Сначала маломощные</span></li>
+          </ul>
+        </div>
+        <div className={classes.stripsElementsBox}>
+          {isWaitSort ? <Spinner /> : stripsElement}
+        </div>
       </div>
     )
   }
 }
 const mapStateToProps = state => ({
   strips: state.stripsPage.strips,
-  isLoading: state.UIPage.isLoading
+  isLoading: state.UIPage.isLoading,
+  isWaitSort: state.UIPage.isWaitSort
 });
 
 const mapDispatchToProps = dispatch => ({
-  onGetStrips: () => dispatch(actions.getStripsRequest())
+  onGetStrips: () => dispatch(actions.getStripsRequest()),
+  onSortedStripsStartLowPrice: () => dispatch(actions.sortedStripsStartLowPrice()),
+  onSortedStripsStartHighPrice: () => dispatch(actions.sortedStripsStartHighPrice()),
+  onSortedStripsStartHighPower: () => dispatch(actions.sortedStripsStartHighPower()),
+  onSortedStripsStartLowPower: () => dispatch(actions.sortedStripsStartLowPower()),
+
 })
 
 export default compose(

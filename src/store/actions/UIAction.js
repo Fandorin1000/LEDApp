@@ -7,7 +7,7 @@ export const clearError = () => ({ type: actionTypes.CLEAR_ERROR, error: null })
 export const toggleIsWaitGetStrip = (payload) => ({ type: actionTypes.TOGGLE_IS_WAIT_GET_STRIP, payload });
 export const toggleIsShowBackdrop = (payload) => ({ type: actionTypes.TOGGLE_IS_SHOW_BACKDROP, payload });
 export const toggleIsShowSideDrawer = (payload) => ({ type: actionTypes.TOGGLE_IS_SHOW_SIDE_DRAWER, payload });
-
+export const toggleIsWaitSort = (payload) => ({ type: actionTypes.TOGGLE_IS_WAIT_SORT, payload });
 const toggleIsScrollActive = (isShow) => {
   const body = document.body;
   isShow ?

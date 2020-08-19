@@ -13,13 +13,28 @@ const Bag = props => {
       <div
         onClick={() => props.deleteFromBag(element.id)}
         className={classes.deleteElementBox}>X</div>
-      <div><h2>{element.name}</h2></div>
+      <div className={classes.imageBox}>
+        <img src={element.imgSrc} alt={element.name} />
+      </div>
+      <div>
+        <NavLink
+          to={`strip/${element.id - 1}`}
+          title={`Перейти к ${element.name}`}>
+          <h2>{element.name}</h2>
+        </NavLink>
+      </div>
       <div className={classes.bagElementBtn}>
-        <button onClick={() => props.decreased(element.id, element.price, element.currentPrice)}>-</button>
+        <button
+          onClick={() => props.decreased(element.id, element.price, element.currentPrice)}
+          title="уменьшить"
+        >-</button>
       </div>
       <div className={classes.bagElementMeters}><span>{element.amount} метр.</span></div>
       <div className={classes.bagElementBtn}>
-        <button onClick={() => props.increased(element.id, element.price)}>+</button>
+        <button
+          onClick={() => props.increased(element.id, element.price)}
+          title="увеличить"
+        >+</button>
       </div>
       <div className={classes.bagElementPrice}><span>{element.currentPrice} грн.</span></div>
     </div>
@@ -38,7 +53,6 @@ const Bag = props => {
     <div className={classes.bagBox}>
       {bag}
       {sum ? <div className={classes.totalCost}><span>Общая стоимость: <strong>{sum} грн.</strong></span></div> : null}
-
     </div>
   );
 }

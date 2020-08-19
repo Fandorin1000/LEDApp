@@ -6,7 +6,7 @@
     position: relative;
 
     div {
-      border: 1px solid red;
+      border: 1px dashed grey;
       padding: 5px;
       width: 100%;
       white-space: wrap;
@@ -16,6 +16,16 @@
       h2 {
         margin: 0;
         font-size: 14px;
+      }
+    }
+
+    .imageBox {
+      height: 100%;
+      max-width: 200px;
+
+      img {
+        width: 100%;
+        height: auto;
       }
     }
 

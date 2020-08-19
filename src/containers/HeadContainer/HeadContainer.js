@@ -26,7 +26,7 @@ class HeadContainer extends Component {
     this.props.onCloseAllModals()
   }
   render() {
-    const { isShowSideDrawer } = this.props
+    const { isShowSideDrawer, bagArray } = this.props
     return (
       <div className={classes.headContainer}>
         <div
@@ -42,9 +42,12 @@ class HeadContainer extends Component {
           <NavigationItem link="/About">О компании</NavigationItem>
           <NavigationItem link="/Contacts">Контакты</NavigationItem>
           <NavigationItem link="/Delivery">Доставка</NavigationItem>
-          <NavigationItem link="/Bag">Корзина</NavigationItem>
+          <NavigationItem link="/Bag">
+            Корзина {bagArray.length > 0 &&
+              <span>({bagArray.length} товаров)</span>}</NavigationItem>
         </NavigationItems>
         <SideDrawer
+          bagArray={bagArray}
           clicked={this.closeAllModalHandler}
           isShowSideDrawer={isShowSideDrawer}
         />
@@ -53,7 +56,8 @@ class HeadContainer extends Component {
   }
 }
 const mapStateToProps = state => ({
-  isShowSideDrawer: state.UIPage.isShowSideDrawer
+  isShowSideDrawer: state.UIPage.isShowSideDrawer,
+  bagArray: state.bagPage.bagArray
 })
 const mapDispatchToProps = dispatch => ({
   onOpenSideDrawerHandler: () => dispatch(actions.openSideDrawer()),

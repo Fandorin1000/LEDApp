@@ -1,7 +1,47 @@
 .stripsContainerBox {
   display: flex;
-  justify-content: space-around;
-  flex-wrap: wrap;
+  justify-content: space-between;
+  width: 100%;
+
+  .sortedBox {
+    max-width: 200px;
+
+
+    ul {
+      display: flex;
+      justify-content: flex-start;
+      flex-wrap: wrap;
+
+    }
+
+    li {
+      margin: 10px;
+      box-sizing: border-box;
+    }
+
+    span {
+      padding: 5px;
+      border: 1px dotted grey;
+      cursor: pointer;
+      border-radius: 5px;
+
+      &:hover {
+        border: 1px dashed blue;
+      }
+    }
+  }
+
+  .stripsElementsBox {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+
+    a {
+      display: block;
+      max-width: 320px;
+    }
+  }
 
   a {
     margin: 10px;
@@ -11,8 +51,21 @@
 
     &:hover {
       transform: scale(1.01);
-
       box-shadow: 0 0 5px black;
+    }
+  }
+}
+
+@media screen and (max-width:860px) {
+  .stripsContainerBox {
+    flex-direction: column;
+
+    .sortedBox {
+      max-width: 100%;
+
+      ul {
+        justify-content: space-around;
+      }
     }
   }
 }

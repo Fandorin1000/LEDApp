@@ -31,4 +31,53 @@ export const getStripRequest = id => async dispatch => {
     await dispatch(actions.setError(error.message));
   }
 }
-
+//sorted start
+export const sortedStripsStartLowPrice = () => async dispatch => {
+  try {
+    await dispatch(actions.toggleIsWaitSort(true));
+    const response = await stripsAPI.getStrips();
+    const sortedStrips = await response.sort((a, b) => a.price - b.price);
+    await dispatch(getStripsRequestSuccess(sortedStrips));
+    await dispatch(actions.toggleIsWaitSort(false));
+  } catch (error) {
+    await dispatch(actions.toggleIsWaitSort(false));
+    await dispatch(actions.setError(error.message));
+  }
+}
+export const sortedStripsStartHighPrice = () => async dispatch => {
+  try {
+    await dispatch(actions.toggleIsWaitSort(true));
+    const response = await stripsAPI.getStrips();
+    const sortedStrips = await response.sort((a, b) => a.price > b.price);
+    await dispatch(getStripsRequestSuccess(sortedStrips));
+    await dispatch(actions.toggleIsWaitSort(false));
+  } catch (error) {
+    await dispatch(actions.toggleIsWaitSort(false));
+    await dispatch(actions.setError(error.message));
+  }
+}
+export const sortedStripsStartHighPower = () => async dispatch => {
+  try {
+    await dispatch(actions.toggleIsWaitSort(true));
+    const response = await stripsAPI.getStrips();
+    const sortedStrips = await response.sort((a, b) => b.characteristics.power - a.characteristics.power);
+    await dispatch(getStripsRequestSuccess(sortedStrips));
+    await dispatch(actions.toggleIsWaitSort(false));
+  } catch (error) {
+    await dispatch(actions.toggleIsWaitSort(false));
+    await dispatch(actions.setError(error.message));
+  }
+}
+export const sortedStripsStartLowPower = () => async dispatch => {
+  try {
+    await dispatch(actions.toggleIsWaitSort(true));
+    const response = await stripsAPI.getStrips();
+    const sortedStrips = await response.sort((a, b) => a.characteristics.power - b.characteristics.power);
+    await dispatch(getStripsRequestSuccess(sortedStrips));
+    await dispatch(actions.toggleIsWaitSort(false));
+  } catch (error) {
+    await dispatch(actions.toggleIsWaitSort(false));
+    await dispatch(actions.setError(error.message));
+  }
+}
+//sorted end

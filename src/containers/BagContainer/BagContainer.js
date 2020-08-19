@@ -11,7 +11,6 @@ class BagContainer extends Component {
     }
   }
   increasedMetersAndPriceHandler = (id, price) => {
-    console.log(id, price)
     this.props.onIncreasedMetersAndPrice(id, price)
   }
   decreasedMetersAndPriceHandler = (id, price, currentPrice) => {
@@ -26,8 +25,12 @@ class BagContainer extends Component {
     this.props.onDeleteElementFromBag(id)
   }
   render() {
+    const { bagArray } = this.props;
+    let title;
+    title = <div className={classes.bagContainerTitle}><h2>Корзина</h2></div>
     return (
       <div className={classes.bagContainer}>
+        {bagArray.length > 0 && title}
         <Bag {...this.props}
           deleteFromBag={(id) => this.deleteElementFromBagHandler(id)}
           increased={(id, price) => this.increasedMetersAndPriceHandler(id, price)}

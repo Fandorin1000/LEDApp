@@ -8,7 +8,7 @@ class FooterContainer extends Component {
     }
   }
   render() {
-    const contacts = this.state.telephones.map(element => <a href={"tel:" + { element }} > {element}</a >)
+    const contacts = this.state.telephones.map((element, index) => <a key={index} href={"tel:" + { element }} > {element}</a >)
     return (
       <div className={classes.footerContainer}>
         <h2>Хоть какой-то футер</h2>

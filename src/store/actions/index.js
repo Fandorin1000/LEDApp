@@ -1,6 +1,10 @@
 export {
   getStripsRequest,
-  getStripRequest
+  getStripRequest,
+  sortedStripsStartLowPrice,
+  sortedStripsStartHighPrice,
+  sortedStripsStartHighPower,
+  sortedStripsStartLowPower
 } from './stripsAction';
 
 export {
@@ -11,7 +15,8 @@ export {
   toggleIsShowBackdrop,
   openSideDrawer,
   toggleIsShowSideDrawer,
-  closeAllModals
+  closeAllModals,
+  toggleIsWaitSort
 } from './UIAction';
 
 export {

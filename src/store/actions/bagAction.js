@@ -25,7 +25,6 @@ export const addToBagProductStart = (bagArray, product) => async dispatch => {
     amount: 1
   }
   try {
-    console.log('work')
     await bag.push(newProduct)
     await localStorage.setItem('bag', JSON.stringify(bag))
     await dispatch(addToBagProduct(newProduct))
