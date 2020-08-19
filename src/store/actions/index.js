@@ -4,7 +4,12 @@ export {
   sortedStripsStartLowPrice,
   sortedStripsStartHighPrice,
   sortedStripsStartHighPower,
-  sortedStripsStartLowPower
+  sortedStripsStartLowPower,
+  filteredTwelveVolts,
+  filteredTwentyFourVolts,
+  filteredWarmLight,
+  filteredNeutralLight,
+  filteredColdLight
 } from './stripsAction';
 
 export {

@@ -36,7 +36,12 @@ const Bag = props => {
           title="увеличить"
         >+</button>
       </div>
-      <div className={classes.bagElementPrice}><span>{element.currentPrice} грн.</span></div>
+      <div className={classes.bagElementPrice}><span>Цена за 1 метр: {element.price} грн.</span></div>
+      <div className={classes.bagElementPrice}>
+        <span>Цена всего: <b>{element.currentPrice} грн.</b> за <br />
+          <b>{element.amount}</b> метр.
+      </span>
+      </div>
     </div>
   ));
   if (sortedBagArray.length <= 0) {
@@ -52,7 +57,7 @@ const Bag = props => {
   return (
     <div className={classes.bagBox}>
       {bag}
-      {sum ? <div className={classes.totalCost}><span>Общая стоимость: <strong>{sum} грн.</strong></span></div> : null}
+      {sum ? <div className={classes.totalCost}><span>Общая стоимость заказа: <strong>{sum} грн.</strong></span></div> : null}
     </div>
   );
 }

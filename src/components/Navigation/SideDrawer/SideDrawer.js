@@ -10,7 +10,7 @@ const SideDrawer = props => {
     isShowSideDrawer && classes.isOpenSideDrawer
   ]
   const productsInBag = (
-    bagArray.length > 0 ? <span>(товаров{bagArray.length})</span> : <span>(пустая)</span>
+    bagArray.length > 0 ? <span>(товаров {bagArray.length})</span> : <span>(пустая)</span>
   )
 
   return <div
