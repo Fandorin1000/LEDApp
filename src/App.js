@@ -10,6 +10,7 @@ import * as actions from './store/actions/index';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
 import BagContainer from './containers/BagContainer/BagContainer';
+import OrderContainer from './containers/OrderContainer/OrderContainer';
 class App extends Component {
   constructor(props) {
     super(props);
@@ -45,6 +46,9 @@ class App extends Component {
             <Route
               path="/bag"
               component={BagContainer} />
+            <Route
+              path="/order"
+              component={OrderContainer} />
             <Route exact path="/" component={StripsContainer} />
           </Switch>
         </div>

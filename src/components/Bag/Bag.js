@@ -57,7 +57,14 @@ const Bag = props => {
   return (
     <div className={classes.bagBox}>
       {bag}
-      {sum ? <div className={classes.totalCost}><span>Общая стоимость заказа: <strong>{sum} грн.</strong></span></div> : null}
+      {sum ? <div className={classes.totalCost}>
+        <span>Общая стоимость заказа: <strong>{sum} грн.</strong></span>
+      </div> : null}
+      {sum > 0 && <div className={classes.toBagBtn}>
+        <button
+          onClick={props.toBagMove} >Продолжить</button>
+      </div>
+      }
     </div>
   );
 }

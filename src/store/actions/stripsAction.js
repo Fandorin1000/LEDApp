@@ -2,6 +2,12 @@ import * as actionTypes from './actionTypes';
 import { stripsAPI } from '../../shared/API';
 import * as actions from './index';
 
+const scrollToTop = () => {
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth"
+  });
+}
 export const getStripsRequestSuccess = (payload) => ({ type: actionTypes.SET_STRIPS, payload });
 export const getStripRequestSuccess = (payload) => ({ type: actionTypes.SET_STRIP, payload });
 
@@ -27,6 +33,7 @@ export const getStripRequest = id => async dispatch => {
     const response = await stripsAPI.getStrip(id);
     await dispatch(getStripRequestSuccess(response));
     await dispatch(actions.toggleIsWaitGetStrip(false));
+    await dispatch(scrollToTop())
   } catch (error) {
     await dispatch(actions.toggleIsWaitGetStrip(false));
     await dispatch(actions.setError(error.message));

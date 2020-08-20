@@ -1,0 +1,23 @@
+.controlsBox {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding-left: 10px;
+
+  div {
+    width: 100%;
+  }
+
+  .controlsBoxTitle {
+    h1 {
+      margin: 0
+    }
+  }
+
+  .controlsBoxButton {
+    button {
+      cursor: pointer;
+    }
+
+  }
+}
