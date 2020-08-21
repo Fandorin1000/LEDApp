@@ -10,8 +10,13 @@ export const stripsAPI = {
     return instance.get(`strips.json`)
       .then(response => response.data)
   },
-  getStrip(id) {
-    return instance.get(`strips/${id}.json`)
+  getStrip(index) {
+    return instance.get(`strips/${index}.json`)
       .then(response => response.data)
+  },
+  setNewComment(index, commentObj) {
+    console.log(commentObj)
+    return instance.post(`strips/${index}/comments.json`, commentObj)
+
   }
 }

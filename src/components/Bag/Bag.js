@@ -13,35 +13,37 @@ const Bag = props => {
       <div
         onClick={() => props.deleteFromBag(element.id)}
         className={classes.deleteElementBox}>X</div>
-      <div className={classes.imageBox}>
-        <img src={element.imgSrc} alt={element.name} />
+      <div className={classes.headBagElement}>
+        <div className={classes.imageBox}>
+          <img src={element.imgSrc} alt={element.name} />
+        </div>
+        <div className={classes.nameBox}>
+          <NavLink
+            to={`strip/${element.id - 1}`}
+            title={`Перейти к ${element.name}`}>
+            <h2>{element.name}</h2>
+          </NavLink>
+        </div>
       </div>
-      <div>
-        <NavLink
-          to={`strip/${element.id - 1}`}
-          title={`Перейти к ${element.name}`}>
-          <h2>{element.name}</h2>
-        </NavLink>
-      </div>
-      <div className={classes.bagElementBtn}>
-        <button
-          onClick={() => props.decreased(element.id, element.price, element.currentPrice)}
-          title="уменьшить"
-        >-</button>
-      </div>
-      <div className={classes.bagElementMeters}><span>{element.amount} метр.</span></div>
-      <div className={classes.bagElementBtn}>
-        <button
-          onClick={() => props.increased(element.id, element.price)}
-          title="увеличить"
-        >+</button>
-      </div>
-      <div className={classes.bagElementPrice}><span>Цена за 1 метр: {element.price} грн.</span></div>
-      <div className={classes.bagElementPrice}>
-        <span>Цена всего: <b>{element.currentPrice} грн.</b> за <br />
-          <b>{element.amount}</b> метр.
+      <div className={classes.footerBagElement}>
+        <div className={classes.footerBagElementMeters}>
+          <button
+            onClick={() => props.decreased(element.id, element.price, element.currentPrice)}
+            title="уменьшить"
+          >-</button>
+          <span>{element.amount} метр.</span>
+          <button
+            onClick={() => props.increased(element.id, element.price)}
+            title="увеличить"
+          >+</button>
+        </div>
+        <div className={classes.footerBagElementPrice}><span>Цена за 1 метр: {element.price} грн.</span></div>
+        <div className={classes.footerBagElementPrice}>
+          <span>Цена всего: <b>{element.currentPrice} грн.</b> за             <b>{element.amount}</b> метр.
       </span>
+        </div>
       </div>
+
     </div>
   ));
   if (sortedBagArray.length <= 0) {

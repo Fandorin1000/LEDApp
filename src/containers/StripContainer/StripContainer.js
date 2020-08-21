@@ -31,21 +31,21 @@ class StripContainer extends Component {
     response = idArray.includes(product.id)
     response ? alert('Товар уже в корзине!') : this.props.onAddToBagProduct(bagArray, product)
   }
-  sendNewCommentHandler = (event) => {
-    event.preventDefault()
-    console.log('stripContainer sendNewCommentHandler')
+  setNewCommentHandler = (stripId, newCommentObject) => {
+    console.log(stripId, newCommentObject)
+    this.props.onSetNewCommentHandler(stripId, newCommentObject)
   }
   render() {
-    const { strip, isWaitGetStrip } = this.props;
+    const { strip, isWaitGetStrip, isWaitGetNewComment } = this.props;
     let imgSrc = null;
     let characteristics = null;
     let comments = null;
     let description = null;
     if (strip) {
-      imgSrc = this.props.strip.imgSrc;
-      characteristics = this.props.strip.characteristics;
-      comments = this.props.strip.comments
-      description = this.props.strip.description
+      imgSrc = strip.imgSrc;
+      characteristics = strip.characteristics;
+      comments = strip.comments
+      description = strip.description
     }
 
     return (
@@ -62,7 +62,9 @@ class StripContainer extends Component {
               <StripDescription description={description} />
               <StripCharacteristics characteristics={characteristics} />
               <StripCommentsBox
+                setNewComment={(newCommentObj) => this.setNewCommentHandler(strip.id - 1, newCommentObj)}
                 comments={comments}
+                isWaitGetNewComment={isWaitGetNewComment}
                 sendNewComment={(event) => this.sendNewCommentHandler(event)} />
             </div>
           </Auxiliary>
@@ -74,11 +76,14 @@ class StripContainer extends Component {
 const mapStateToProps = state => ({
   strip: state.stripsPage.strip,
   isWaitGetStrip: state.UIPage.isWaitGetStrip,
+  isWaitGetNewComment: state.UIPage.isWaitGetNewComment,
   bagArray: state.bagPage.bagArray
 })
 const mapDispatchToProps = dispatch => ({
   onGetStripRequest: (id) => dispatch(actions.getStripRequest(id)),
-  onAddToBagProduct: (bagArray, product) => dispatch(actions.addToBagProductStart(bagArray, product))
+  onAddToBagProduct: (bagArray, product) => dispatch(actions.addToBagProductStart(bagArray, product)),
+  onSetNewCommentHandler: (productIndexInMyBadBackend, setNewCommentHandler) =>
+    dispatch(actions.setNewComment(productIndexInMyBadBackend, setNewCommentHandler))
 })
 export default compose(
   connect(mapStateToProps, mapDispatchToProps),

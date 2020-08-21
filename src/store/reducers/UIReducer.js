@@ -7,7 +7,8 @@ const initialState = {
   isWaitGetStrip: false,
   isShowBackdrop: null,
   isShowSideDrawer: false,
-  isWaitSort: false
+  isWaitSort: false,
+  isWaitGetNewComment: false
 }
 
 const toggleIsLoading = (state, action) => updatedObject(state, { isLoading: action.payload });
@@ -17,6 +18,7 @@ const toggleIsWaitGetStrip = (state, action) => updatedObject(state, { isWaitGet
 const toggleIsShowBackdrop = (state, action) => updatedObject(state, { isShowBackdrop: action.payload });
 const toggleIsShowSideDrawer = (state, action) => updatedObject(state, { isShowSideDrawer: action.payload });
 const toggleIsWaitSort = (state, action) => updatedObject(state, { isWaitSort: action.payload });
+const toggleIsWaitGetNewComment = (state, action) => updatedObject(state, { isWaitGetNewComment: action.payload });
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
@@ -27,6 +29,7 @@ const reducer = (state = initialState, action) => {
     case (actionTypes.TOGGLE_IS_SHOW_BACKDROP): return toggleIsShowBackdrop(state, action);
     case (actionTypes.TOGGLE_IS_SHOW_SIDE_DRAWER): return toggleIsShowSideDrawer(state, action);
     case (actionTypes.TOGGLE_IS_WAIT_SORT): return toggleIsWaitSort(state, action);
+    case (actionTypes.TOGGLE_IS_WAIT_GET_NEW_COMMENT): return toggleIsWaitGetNewComment(state, action);
     default: return state;
   }
 }

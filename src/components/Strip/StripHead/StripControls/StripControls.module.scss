@@ -21,3 +21,18 @@
 
   }
 }
+
+@media screen and (max-width:680px) {
+  .controlsBoxTitle {
+    h1 {
+      font-size: 14px;
+    }
+  }
+}
+
+@media screen and (max-width:600px) {
+  .controlsBox {
+    flex-direction: column;
+    padding: 0;
+  }
+}

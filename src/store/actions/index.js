@@ -9,7 +9,8 @@ export {
   filteredTwentyFourVolts,
   filteredWarmLight,
   filteredNeutralLight,
-  filteredColdLight
+  filteredColdLight,
+  setNewComment
 } from './stripsAction';
 
 export {
@@ -21,7 +22,8 @@ export {
   openSideDrawer,
   toggleIsShowSideDrawer,
   closeAllModals,
-  toggleIsWaitSort
+  toggleIsWaitSort,
+  toggleIsWaitGetNewComment
 } from './UIAction';
 
 export {

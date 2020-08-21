@@ -1,71 +1,105 @@
 .bagBox {
+  box-sizing: border-box;
 
   .bagElement {
     display: flex;
-    max-width: 100%;
+    width: 100%;
     position: relative;
+    border: 1px dashed grey;
+    justify-content: flex-start;
 
-    div {
-      border: 1px dashed grey;
-      padding: 5px;
-      width: 100%;
-      white-space: wrap;
+    .headBagElement {
       display: flex;
       align-items: center;
+      width: auto;
+      justify-content: flex-start;
 
-      h2 {
-        margin: 0;
-        font-size: 14px;
-      }
-    }
-
-    .imageBox {
-      height: 100%;
-      max-width: 100px;
-
-      img {
+      div {
+        height: 100%;
         width: 100%;
-        height: auto;
+        display: flex;
+        align-items: center;
+        box-sizing: border-box;
+        border: 1px dotted grey;
       }
-    }
 
-    &Meters {
-      max-width: 100px;
-      box-sizing: border-box;
-      justify-content: center;
-    }
+      .imageBox {
+        height: 100%;
+        max-width: 100px;
+        align-items: center;
+        display: flex;
 
-    &Btn {
-      max-width: 35px;
-      justify-content: center;
-
-      button {
-        cursor: pointer;
-        width: 25px;
-        height: 25px;
-        padding: 0;
+        img {
+          width: 100%;
+          height: auto;
+        }
       }
+
+      .nameBox a h2 {
+        font-size: 14px;
+        padding: 2px;
+        text-align: center;
+      }
+
     }
 
-    &Price {
-      max-width: 100px;
-      justify-content: center;
+    .footerBagElement {
+      display: flex;
+      justify-content: space-around;
+      width: 100%;
+      align-items: center;
+
+      div {
+        height: 100%;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        box-sizing: border-box;
+        border: 1px dotted grey;
+      }
+
+      &Meters {
+        box-sizing: border-box;
+        justify-content: center;
+
+        span {
+          margin: auto 10px;
+        }
+      }
+
+      &Btn {
+        max-width: 35px;
+        justify-content: center;
+
+        button {
+          cursor: pointer;
+          width: 25px;
+          height: 25px;
+          padding: 0;
+        }
+      }
+
+      &Price {
+        justify-content: center;
+      }
     }
 
     .deleteElementBox {
       position: absolute;
-      right: 2px;
-      top: 2px;
+      right: 8px;
+      top: 8px;
       width: 10px;
-      font-size: 14px;
-      border: 1px solid transparent;
+      height: 10px;
+      border: none;
       font-weight: 900;
       cursor: pointer;
-      height: 10px;
-      line-height: 0;
       padding: 0;
       transition: .3s all ease-out;
       color: red;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-sizing: border-box;
 
       &:hover {
         color: blue
@@ -91,6 +125,56 @@
 
     div {
       margin: 20px;
+    }
+  }
+}
+
+@media screen and (max-width:680px) {
+  .bagBox {
+
+
+    .bagElement {
+      flex-direction: column;
+      align-items: stretch;
+      box-sizing: border-box;
+
+
+      .headBagElement {
+        height: 98px;
+
+        .nameBox {
+
+          a {
+            display: flex;
+            align-items: center;
+            height: 100%;
+
+          }
+        }
+      }
+
+      .footerBagElement {
+        height: 34px;
+
+
+        div {
+          font-size: 12px;
+
+
+          span {
+            text-align: center;
+          }
+        }
+
+        &Meters {
+          justify-content: center;
+
+          span {
+            margin: auto 2px;
+            font-size: 12px;
+          }
+        }
+      }
     }
   }
 }

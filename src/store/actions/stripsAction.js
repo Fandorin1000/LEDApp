@@ -39,6 +39,21 @@ export const getStripRequest = id => async dispatch => {
     await dispatch(actions.setError(error.message));
   }
 }
+
+export const setNewComment = (index, comObj) => async dispatch => {
+  try {
+    await dispatch(actions.toggleIsWaitGetNewComment(true))
+    const response = await stripsAPI.setNewComment(index, comObj);
+    await console.log(response);
+    const stripResponse = await stripsAPI.getStrip(index);
+    await dispatch(getStripRequestSuccess(stripResponse));
+    await dispatch(actions.toggleIsWaitGetNewComment(false))
+  } catch (error) {
+    await dispatch(actions.toggleIsWaitGetNewComment(false))
+    await dispatch(actions.setError(error.message));
+  }
+}
+
 //sorted start
 export const sortedStripsStartLowPrice = (strips) => async dispatch => {
   try {

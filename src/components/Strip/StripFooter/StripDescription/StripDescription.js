@@ -3,7 +3,7 @@ import classes from './StripDescription.module.scss';
 import Auxiliary from '../../../../hoc/Auxiliary';
 
 const StripDescription = props => {
-  const { description } = props;
+  const { description, } = props;
   let descr = null;
   if (description) {
     descr = <div className={classes.stripFooterBoxDescription}>
