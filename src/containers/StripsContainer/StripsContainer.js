@@ -6,6 +6,9 @@ import StripsElement from '../../components/StripsElement/StripsElement';
 import Spinner from '../../components/UI/Spinner/Spinner';
 import { NavLink, withRouter } from 'react-router-dom';
 import { compose } from 'redux';
+import SortBox from '../../components/SortBox/SortBox';
+import FilterBox from '../../components/FilterBox/FilterBox';
+import FilterArguments from '../../components/FilterBox/FilterArguments/FilterArguments';
 
 class StripsContainer extends Component {
   constructor(props) {
@@ -14,8 +17,24 @@ class StripsContainer extends Component {
       currentFilterArguments: []
     }
   }
-  componentDidMount() {
-    this.props.onGetStrips()
+  async componentDidMount() {
+    await this.props.onGetStrips();
+    if (document.documentElement.offsetWidth > 843) {
+      await this.toggleIsShowSortListHandler()
+      await this.toggleIsShowFilterListHandler()
+    }
+  }
+
+  addToCurrentFilterArgumentsNewPartHandler = (event) => {
+    const argument = event.currentTarget.childNodes[0].textContent;
+    const parent = event.currentTarget.parentNode;
+    this.setState(prevState => {
+      return { currentFilterArguments: [...prevState.currentFilterArguments, argument] }
+    })
+    parent.remove()
+  }
+  refreshFilterArgumentsHandler = () => {
+    window.location.reload(false)
   }
   //sorted start
   sortedStripsStartLowPriceHandler = () => this.props.onSortedStripsStartLowPrice(this.props.strips)
@@ -45,20 +64,14 @@ class StripsContainer extends Component {
     this.props.onFilteredColdLight(this.props.strips)
   }
   //filtered end 
-  addToCurrentFilterArgumentsNewPartHandler = (event) => {
-    const argument = event.currentTarget.childNodes[0].textContent;
-    const parent = event.currentTarget.parentNode;
-    this.setState(prevState => {
-      return { currentFilterArguments: [...prevState.currentFilterArguments, argument] }
-    })
-    parent.remove()
+  toggleIsShowSortListHandler = () => {
+    this.props.onToggleIsShowSortList()
   }
-  refreshFilterArgumentsHandler = () => {
-    window.location.reload(false)
+  toggleIsShowFilterListHandler = () => {
+    this.props.onToggleIsShowFilterList()
   }
-
   render() {
-    const { isLoading, strips, isWaitSort } = this.props;
+    const { isLoading, strips, isWaitSort, isShowSortList, isShowFilterList } = this.props;
     let stripsElement = null;
     if (isLoading) {
       stripsElement = <Spinner />
@@ -80,50 +93,41 @@ class StripsContainer extends Component {
         </div>
       )
     }
-    const filterElementOfArguments = this.state.currentFilterArguments.map(element => (
-      <div
-        key={element}>
-        <span>{element}</span>
-      </div>
-    ))
-
     return (
-      <div className={classes.stripsContainerBox}>
-        <div className={classes.sortedBox}>
-          {filterElementOfArguments.length > 0 && <div
-            className={classes.filterArgumentsBox}>
-            <div><button onClick={this.refreshFilterArgumentsHandler}>Сбросить фильтр</button></div>
-            <h2>Параметры фильтации:</h2>
-            {filterElementOfArguments}
-          </div>}
-          <div className={classes.sortListBox}>
-            <h2>Отсортируй:</h2>
-            <ul>
-              <li onClick={this.sortedStripsStartLowPriceHandler}><span>Сначала дешевле</span></li>
-              <li onClick={this.sortedStripsStartHighPriceHandler}><span>Сначала дороже</span></li>
-              <li onClick={this.sortedStripsStartHighPowerHandler}><span>Сначала мощные</span></li>
-              <li onClick={this.sortedStripsStartLowPowerHandler}><span>Сначала маломощные</span></li>
-            </ul>
+      <div>
+        <h1 className={classes.stripsTitle}>
+          Светодиодная лента - современное решение ежедневных потребностей!
+        </h1>
+        <div className={classes.stripsContainerBox}>
+          <div className={classes.sortedBox}>
+            <FilterArguments
+              filterElementOfArguments={this.state.currentFilterArguments}
+              refreshFilterArguments={this.refreshFilterArgumentsHandler}
+            />
+            <SortBox
+              isShowSortList={isShowSortList}
+              toggleIsShowSortList={this.toggleIsShowSortListHandler}
+              sortedStripsStartLowPrice={this.sortedStripsStartLowPriceHandler}
+              sortedStripsStartHighPrice={this.sortedStripsStartHighPriceHandler}
+              sortedStripsStartHighPower={this.sortedStripsStartHighPowerHandler}
+              sortedStripsStartLowPower={this.sortedStripsStartLowPowerHandler}
+            />
+            {this.state.currentFilterArguments.length < 2 ?
+              <FilterBox
+                isShowFilterList={isShowFilterList}
+                toggleIsShowFilterList={this.toggleIsShowFilterListHandler}
+                filteredTwelveVolts={this.filteredTwelveVoltsHandler}
+                filteredTwentyFourVolts={this.filteredTwentyFourVoltsHandler}
+                filteredWarmLight={this.filteredWarmLightHandler}
+                filteredNeutralLight={this.filteredNeutralLightHandler}
+                filteredColdLight={this.filteredColdLightHandler}
+              /> : null
+            }
+
           </div>
-          <div className={classes.filterListBox}>
-            <h2>Отфильтруй:</h2>
-            <ul>
-              <ul>
-                <h5>По исходящему напряжению</h5>
-                <li onClick={this.filteredTwelveVoltsHandler}><span>12V</span></li>
-                <li onClick={this.filteredTwentyFourVoltsHandler}><span>24V</span></li>
-              </ul>
-              <ul>
-                <h5>По температуре света</h5>
-                <li onClick={this.filteredWarmLightHandler}><span>Теплый свет</span></li>
-                <li onClick={this.filteredNeutralLightHandler}><span>Нейтральный свет</span></li>
-                <li onClick={this.filteredColdLightHandler}><span>Холодный свет</span></li>
-              </ul>
-            </ul>
+          <div className={classes.stripsElementsBox}>
+            {isWaitSort ? <Spinner /> : stripsElement}
           </div>
-        </div>
-        <div className={classes.stripsElementsBox}>
-          {isWaitSort ? <Spinner /> : stripsElement}
         </div>
       </div>
     )
@@ -132,7 +136,9 @@ class StripsContainer extends Component {
 const mapStateToProps = state => ({
   strips: state.stripsPage.strips,
   isLoading: state.UIPage.isLoading,
-  isWaitSort: state.UIPage.isWaitSort
+  isWaitSort: state.UIPage.isWaitSort,
+  isShowSortList: state.UIPage.isShowSortList,
+  isShowFilterList: state.UIPage.isShowFilterList
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -145,7 +151,9 @@ const mapDispatchToProps = dispatch => ({
   onFilteredTwentyFourVolts: (strips) => dispatch(actions.filteredTwentyFourVolts(strips)),
   onFilteredWarmLight: (strips) => dispatch(actions.filteredWarmLight(strips)),
   onFilteredNeutralLight: (strips) => dispatch(actions.filteredNeutralLight(strips)),
-  onFilteredColdLight: (strips) => dispatch(actions.filteredColdLight(strips))
+  onFilteredColdLight: (strips) => dispatch(actions.filteredColdLight(strips)),
+  onToggleIsShowSortList: () => dispatch(actions.toggleIsShowSortList()),
+  onToggleIsShowFilterList: () => dispatch(actions.toggleIsShowFilterList())
 })
 
 export default compose(

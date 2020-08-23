@@ -23,7 +23,9 @@ export {
   toggleIsShowSideDrawer,
   closeAllModals,
   toggleIsWaitSort,
-  toggleIsWaitGetNewComment
+  toggleIsWaitGetNewComment,
+  toggleIsShowSortList,
+  toggleIsShowFilterList
 } from './UIAction';
 
 export {

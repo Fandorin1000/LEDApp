@@ -8,81 +8,9 @@
     border: 1px dashed grey;
     justify-content: flex-start;
 
-    .headBagElement {
-      display: flex;
-      align-items: center;
-      width: auto;
-      justify-content: flex-start;
 
-      div {
-        height: 100%;
-        width: 100%;
-        display: flex;
-        align-items: center;
-        box-sizing: border-box;
-        border: 1px dotted grey;
-      }
 
-      .imageBox {
-        height: 100%;
-        max-width: 100px;
-        align-items: center;
-        display: flex;
 
-        img {
-          width: 100%;
-          height: auto;
-        }
-      }
-
-      .nameBox a h2 {
-        font-size: 14px;
-        padding: 2px;
-        text-align: center;
-      }
-
-    }
-
-    .footerBagElement {
-      display: flex;
-      justify-content: space-around;
-      width: 100%;
-      align-items: center;
-
-      div {
-        height: 100%;
-        width: 100%;
-        display: flex;
-        align-items: center;
-        box-sizing: border-box;
-        border: 1px dotted grey;
-      }
-
-      &Meters {
-        box-sizing: border-box;
-        justify-content: center;
-
-        span {
-          margin: auto 10px;
-        }
-      }
-
-      &Btn {
-        max-width: 35px;
-        justify-content: center;
-
-        button {
-          cursor: pointer;
-          width: 25px;
-          height: 25px;
-          padding: 0;
-        }
-      }
-
-      &Price {
-        justify-content: center;
-      }
-    }
 
     .deleteElementBox {
       position: absolute;
@@ -127,6 +55,30 @@
       margin: 20px;
     }
   }
+
+  .toOrderBtnBox {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    button {
+
+      margin: 10px auto;
+      background: blue;
+      color: white;
+      border-radius: 5px;
+      border: 1px solid white;
+      outline: none;
+      padding: 5px 10px;
+      transition: all .3s ease-out;
+
+      &:hover {
+        background: white;
+        color: blue;
+        border: 1px solid blue;
+      }
+    }
+  }
 }
 
 @media screen and (max-width:680px) {
@@ -139,42 +91,9 @@
       box-sizing: border-box;
 
 
-      .headBagElement {
-        height: 98px;
-
-        .nameBox {
-
-          a {
-            display: flex;
-            align-items: center;
-            height: 100%;
-
-          }
-        }
-      }
-
-      .footerBagElement {
-        height: 34px;
 
 
-        div {
-          font-size: 12px;
 
-
-          span {
-            text-align: center;
-          }
-        }
-
-        &Meters {
-          justify-content: center;
-
-          span {
-            margin: auto 2px;
-            font-size: 12px;
-          }
-        }
-      }
     }
   }
 }

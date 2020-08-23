@@ -8,7 +8,10 @@ export const toggleIsWaitGetStrip = (payload) => ({ type: actionTypes.TOGGLE_IS_
 export const toggleIsShowBackdrop = (payload) => ({ type: actionTypes.TOGGLE_IS_SHOW_BACKDROP, payload });
 export const toggleIsShowSideDrawer = (payload) => ({ type: actionTypes.TOGGLE_IS_SHOW_SIDE_DRAWER, payload });
 export const toggleIsWaitSort = (payload) => ({ type: actionTypes.TOGGLE_IS_WAIT_SORT, payload });
-export const toggleIsWaitGetNewComment = (payload) => ({ type: actionTypes.TOGGLE_IS_WAIT_GET_NEW_COMMENT, payload })
+export const toggleIsWaitGetNewComment = (payload) => ({ type: actionTypes.TOGGLE_IS_WAIT_GET_NEW_COMMENT, payload });
+export const toggleIsShowSortList = () => ({ type: actionTypes.TOGGLE_IS_SHOW_SORT_LIST });
+export const toggleIsShowFilterList = () => ({ type: actionTypes.TOGGLE_IS_SHOW_FILTER_LIST });
+
 const toggleIsScrollActive = (isShow) => {
   const body = document.body;
   isShow ?

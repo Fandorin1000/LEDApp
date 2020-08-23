@@ -1,7 +1,26 @@
+.stripsTitle {
+  margin: 20px 10px;
+  font-weight: 900;
+  text-align: center;
+}
+
 .stripsContainerBox {
+
   display: flex;
   justify-content: space-between;
   width: 100%;
+
+  h2 {
+    margin: 10px;
+    font-size: 18px;
+    border: 1px dotted grey;
+    cursor: pointer;
+    border-radius: 5px;
+
+    &:hover {
+      border: 1px dashed blue;
+    }
+  }
 
   .sortedBox {
     max-width: 200px;
@@ -9,8 +28,6 @@
     h2 {
       text-align: center;
     }
-
-
 
     ul {
       display: flex;
@@ -90,22 +107,19 @@
   }
 }
 
-.filterArgumentsBox {
-  div {
-    margin: 15px auto;
-    text-align: center;
-    box-sizing: border-box;
-
-    button {
-      cursor: pointer;
-    }
-  }
-}
-
 
 @media screen and (max-width:860px) {
+  .stripsTitle {
+    font-size: 14px;
+  }
+
   .stripsContainerBox {
     flex-direction: column;
+
+    h2 {
+      font-size: 14px;
+    }
+
 
     .sortedBox {
       max-width: 100%;

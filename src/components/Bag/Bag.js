@@ -1,49 +1,30 @@
 import React from 'react';
 import classes from './Bag.module.scss';
 import { NavLink } from 'react-router-dom';
+import HeadElementBag from './HeadElementBag/HeadElementBag';
+import FooterElementBag from './FooterElementBag/FooterElementBag';
 
 const Bag = props => {
   const { bagArray } = props;
   const sortedBagArray = bagArray.sort((a, b) => a.id - b.id)
   let bag;
   let sum = 0;
-  console.log(bagArray)
   const productsRender = sortedBagArray.map(element => (
     <div key={element.id} className={classes.bagElement}>
-      <div
-        onClick={() => props.deleteFromBag(element.id)}
-        className={classes.deleteElementBox}>X</div>
-      <div className={classes.headBagElement}>
-        <div className={classes.imageBox}>
-          <img src={element.imgSrc} alt={element.name} />
-        </div>
-        <div className={classes.nameBox}>
-          <NavLink
-            to={`strip/${element.id - 1}`}
-            title={`Перейти к ${element.name}`}>
-            <h2>{element.name}</h2>
-          </NavLink>
-        </div>
-      </div>
-      <div className={classes.footerBagElement}>
-        <div className={classes.footerBagElementMeters}>
-          <button
-            onClick={() => props.decreased(element.id, element.price, element.currentPrice)}
-            title="уменьшить"
-          >-</button>
-          <span>{element.amount} метр.</span>
-          <button
-            onClick={() => props.increased(element.id, element.price)}
-            title="увеличить"
-          >+</button>
-        </div>
-        <div className={classes.footerBagElementPrice}><span>Цена за 1 метр: {element.price} грн.</span></div>
-        <div className={classes.footerBagElementPrice}>
-          <span>Цена всего: <b>{element.currentPrice} грн.</b> за             <b>{element.amount}</b> метр.
-      </span>
-        </div>
-      </div>
-
+      <div onClick={() => props.deleteFromBag(element.id)} className={classes.deleteElementBox}>        X        </div>
+      <HeadElementBag
+        imgSrc={element.imgSrc}
+        name={element.name}
+        id={element.id}
+      />
+      <FooterElementBag
+        decreased={() => props.decreased(element.id, element.price, element.currentPrice)}
+        increased={() => props.increased(element.id, element.price)}
+        id={element.id}
+        price={element.price}
+        currentPrice={element.currentPrice}
+        amount={element.amount}
+      />
     </div>
   ));
   if (sortedBagArray.length <= 0) {
@@ -62,7 +43,7 @@ const Bag = props => {
       {sum ? <div className={classes.totalCost}>
         <span>Общая стоимость заказа: <strong>{sum} грн.</strong></span>
       </div> : null}
-      {sum > 0 && <div className={classes.toBagBtn}>
+      {sum > 0 && <div className={classes.toOrderBtnBox}>
         <button
           onClick={props.toBagMove} >Продолжить</button>
       </div>

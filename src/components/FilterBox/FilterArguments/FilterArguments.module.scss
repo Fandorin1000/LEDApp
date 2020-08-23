@@ -1,0 +1,26 @@
+.filterArgumentsBox {
+  h3 {
+    margin: auto;
+    text-align: center;
+  }
+
+  div {
+    margin: 15px auto;
+    text-align: center;
+    box-sizing: border-box;
+
+    p {
+      text-align: left;
+      font-weight: bold;
+      margin: 0;
+    }
+
+    button {
+      cursor: pointer;
+    }
+  }
+
+  .filterElementBox {
+    margin: 0 auto;
+  }
+}

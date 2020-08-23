@@ -1,0 +1,50 @@
+.headBagElement {
+  display: flex;
+  align-items: center;
+  width: auto;
+  justify-content: flex-start;
+
+  div {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    box-sizing: border-box;
+    border: 1px dotted grey;
+  }
+
+  .imageBox {
+    height: 100%;
+    max-width: 100px;
+    align-items: center;
+    display: flex;
+
+    img {
+      width: 100%;
+      height: auto;
+    }
+  }
+
+  .nameBox a h2 {
+    font-size: 14px;
+    padding: 2px;
+    text-align: center;
+  }
+
+}
+
+@media screen and (max-width:680px) {
+  .headBagElement {
+    height: 98px;
+
+    .nameBox {
+
+      a {
+        display: flex;
+        align-items: center;
+        height: 100%;
+
+      }
+    }
+  }
+}

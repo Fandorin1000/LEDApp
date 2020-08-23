@@ -31,9 +31,9 @@ class HeadContainer extends Component {
       <div className={classes.headContainer}>
         <div
           title="На главную"
-          className={classes.logoBox}>
+          className={classes.logoBox}
+          onClick={this.toMainMoveHandler}>
           <img
-            onClick={this.toMainMoveHandler}
             src='https://led-stil.com/image/catalog/led/logo1.png'
             alt="led-stil logo elephant" />
         </div>

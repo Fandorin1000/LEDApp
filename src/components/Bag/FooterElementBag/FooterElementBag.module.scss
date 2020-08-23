@@ -1,0 +1,65 @@
+.footerBagElement {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  align-items: center;
+
+  div {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    box-sizing: border-box;
+    border: 1px dotted grey;
+  }
+
+  &Meters {
+    box-sizing: border-box;
+    justify-content: center;
+
+    span {
+      margin: auto 10px;
+    }
+  }
+
+  &Btn {
+    max-width: 35px;
+    justify-content: center;
+
+    button {
+      cursor: pointer;
+      width: 25px;
+      height: 25px;
+      padding: 0;
+    }
+  }
+
+  &Price {
+    justify-content: center;
+  }
+}
+
+@media screen and (max-width:680px) {
+  .footerBagElement {
+    height: 34px;
+
+
+    div {
+      font-size: 12px;
+
+
+      span {
+        text-align: center;
+      }
+    }
+
+    &Meters {
+      justify-content: center;
+
+      span {
+        margin: auto 2px;
+        font-size: 12px;
+      }
+    }
+  }
+}
