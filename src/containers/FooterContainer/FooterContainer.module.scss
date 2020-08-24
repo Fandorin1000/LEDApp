@@ -24,3 +24,12 @@
     }
   }
 }
+
+@media screen and (max-width:600px) {
+  .footerContainer {
+    .footerContactsList {
+      flex-direction: column;
+      text-align: center;
+    }
+  }
+}

@@ -33,6 +33,7 @@ const decreasedMetersAndPrice = (state, action) => updatedObject(state, {
 const deleteElementFromBag = (state, action) => updatedObject(state, {
   bagArray: state.bagArray.filter(element => element.id !== action.id)
 })
+const clearBag = (state) => updatedObject(state, { bagArray: [] })
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
@@ -40,6 +41,7 @@ const reducer = (state = initialState, action) => {
     case (actionTypes.INCREASED_METERS_AND_PRICE): return increasedMetersAndPrice(state, action);
     case (actionTypes.DECREASED_METERS_AND_PRICE): return decreasedMetersAndPrice(state, action);
     case (actionTypes.DELETE_ELEMENT_FROM_BAG): return deleteElementFromBag(state, action);
+    case (actionTypes.CLEAR_BAG): return clearBag(state);
     default: return state;
   }
 }

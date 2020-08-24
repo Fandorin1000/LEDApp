@@ -25,7 +25,9 @@ export {
   toggleIsWaitSort,
   toggleIsWaitGetNewComment,
   toggleIsShowSortList,
-  toggleIsShowFilterList
+  toggleIsShowFilterList,
+  toggleIsShowOrderSuccessModal,
+  toggleIsWaitSendOrderData
 } from './UIAction';
 
 export {
@@ -34,5 +36,7 @@ export {
   increasedMetersAndPrice,
   decreasedMetersAndPrice,
   deleteElementFromBag,
-  deleteElementFromBagStart
+  deleteElementFromBagStart,
+  clearBag,
+  sendOrderStartProgress
 } from './bagAction';

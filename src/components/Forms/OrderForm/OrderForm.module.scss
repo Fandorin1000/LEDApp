@@ -1,0 +1,67 @@
+form {
+  .formBox {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    padding: 5px;
+    box-sizing: border-box;
+
+    .formItem {
+      margin: 0 auto;
+      width: 100%;
+      max-width: 600px;
+
+      label {
+        cursor: pointer;
+        display: block;
+      }
+
+      input,
+      textarea {
+        width: 100%;
+        box-sizing: border-box;
+        padding: 5px;
+        resize: none;
+        cursor: pointer;
+        border: 1px dashed grey;
+        border-radius: 5px;
+        outline: none;
+        font-size: 16px;
+
+        &:hover,
+        &:focus,
+        &:active {
+          border: 1px solid blue;
+        }
+      }
+
+    }
+  }
+
+  button {
+    display: block;
+    margin: 15px auto;
+    padding: 5px 10px;
+    border-radius: 5px;
+    outline: none;
+    border: 1px solid white;
+    background: blue;
+    color: white;
+    transition: all 0.3s ease-out;
+    text-transform: uppercase;
+    font-weight: 900;
+
+    &:hover {
+      border: 1px solid blue;
+      background: white;
+      color: blue;
+    }
+  }
+}
+
+.errorMessageBox {
+  span {
+    color: red;
+    font-weight: 900;
+  }
+}

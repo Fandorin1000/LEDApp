@@ -11,23 +11,33 @@ import { compose } from 'redux';
 import { connect } from 'react-redux';
 import BagContainer from './containers/BagContainer/BagContainer';
 import OrderContainer from './containers/OrderContainer/OrderContainer';
+import ErrorModal from './components/Modals/ErrorModal/ErrorModal';
 class App extends Component {
   constructor(props) {
     super(props);
     this.closeAllModalsHandler = this.closeAllModalsHandler.bind(this)
+  }
+  componentDidMount() {
+    const { bagArray } = this.props
+    if (bagArray.length === 0) {
+      this.props.onGetProductsFromLS()
+    }
   }
   closeAllModalsHandler = () => {
     const { onCloseAllModals } = this.props;
     onCloseAllModals()
   }
   render() {
-    const { isShowBackdrop } = this.props;
+    const { isShowBackdrop, error } = this.props;
+    console.log(error)
     return (
       <div className={classes.app}>
         <Backdrop
           isShowBackdrop={isShowBackdrop}
           clicked={this.closeAllModalsHandler}
         />
+        <ErrorModal error={error} />
+
         <HeadContainer />
         <div className={classes.main}>
           <Switch>
@@ -58,10 +68,13 @@ class App extends Component {
   }
 }
 const mapStateToProps = state => ({
-  isShowBackdrop: state.UIPage.isShowBackdrop
+  isShowBackdrop: state.UIPage.isShowBackdrop,
+  bagArray: state.bagPage.bagArray,
+  error: state.UIPage.error
 })
 const mapDispatchToProps = dispatch => ({
-  onCloseAllModals: () => dispatch(actions.closeAllModals())
+  onCloseAllModals: () => dispatch(actions.closeAllModals()),
+  onGetProductsFromLS: () => dispatch(actions.getProductsFromLS())
 })
 export default compose(
   connect(mapStateToProps, mapDispatchToProps),

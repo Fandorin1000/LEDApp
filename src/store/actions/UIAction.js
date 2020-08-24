@@ -11,6 +11,8 @@ export const toggleIsWaitSort = (payload) => ({ type: actionTypes.TOGGLE_IS_WAIT
 export const toggleIsWaitGetNewComment = (payload) => ({ type: actionTypes.TOGGLE_IS_WAIT_GET_NEW_COMMENT, payload });
 export const toggleIsShowSortList = () => ({ type: actionTypes.TOGGLE_IS_SHOW_SORT_LIST });
 export const toggleIsShowFilterList = () => ({ type: actionTypes.TOGGLE_IS_SHOW_FILTER_LIST });
+export const toggleIsShowOrderSuccessModal = (payload) => ({ type: actionTypes.TOGGLE_IS_SHOW_ORDER_SUCCESS_MODAL, payload })
+export const toggleIsWaitSendOrderData = (payload) => ({ type: actionTypes.TOGGLE_IS_WAIT_SEND_ORDER_DATA, payload })
 
 const toggleIsScrollActive = (isShow) => {
   const body = document.body;
@@ -25,7 +27,7 @@ export const closeAllModals = () => async dispatch => {
     await toggleIsScrollActive(false);
     await dispatch(toggleIsShowBackdrop(false));
     await dispatch(toggleIsShowSideDrawer(false));
-
+    await dispatch(toggleIsShowOrderSuccessModal(false))
   } catch (error) {
     await dispatch(actions.setError(error.message));
   }
@@ -43,3 +45,5 @@ export const openSideDrawer = () => async dispatch => {
     await dispatch(actions.setError(error.message))
   }
 }
+
+

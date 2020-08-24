@@ -15,8 +15,9 @@ export const stripsAPI = {
       .then(response => response.data)
   },
   setNewComment(index, commentObj) {
-    console.log(commentObj)
     return instance.post(`strips/${index}/comments.json`, commentObj)
-
+  },
+  sendNewOrder(orderData) {
+    return instance.post(`orders.json`, orderData)
   }
 }

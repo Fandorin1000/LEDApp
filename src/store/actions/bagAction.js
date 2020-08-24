@@ -1,11 +1,12 @@
 import * as actionTypes from './actionTypes';
 import * as actions from './index';
+import { stripsAPI } from '../../shared/API';
 
 export const addToBagProduct = (payload) => ({ type: actionTypes.ADD_TO_BAG_PRODUCT, payload });
 export const increasedMetersAndPrice = (id, price) => ({ type: actionTypes.INCREASED_METERS_AND_PRICE, id, price })
 export const decreasedMetersAndPrice = (id, price) => ({ type: actionTypes.DECREASED_METERS_AND_PRICE, id, price })
 export const deleteElementFromBag = id => ({ type: actionTypes.DELETE_ELEMENT_FROM_BAG, id })
-
+export const clearBag = () => ({ type: actionTypes.CLEAR_BAG })
 export const deleteElementFromBagStart = id => async dispatch => {
   try {
     const bag = await JSON.parse(localStorage.getItem('bag'));
@@ -48,8 +49,24 @@ export const getProductsFromLS = () => async dispatch => {
     await (dispatch(actions.setError(error.message)))
   }
 }
-
-
-
-
+export const sendOrderStartProgress = (orderData) => async dispatch => {
+  await dispatch(actions.toggleIsWaitSendOrderData(true));
+  try {
+    await stripsAPI.sendNewOrder(orderData);
+    await dispatch(actions.toggleIsWaitSendOrderData(false));
+    await dispatch(actions.toggleIsShowBackdrop(true));
+    await dispatch(actions.toggleIsShowOrderSuccessModal(true));
+    await setTimeout(() => {
+      dispatch(actions.toggleIsShowBackdrop(false));
+      dispatch(actions.toggleIsShowOrderSuccessModal(false));
+      dispatch(clearBag());
+      localStorage.removeItem('bag');
+    }, 5000)
+  }
+  catch (error) {
+    await dispatch(actions.toggleIsWaitSendOrderData(false));
+    await dispatch(actions.toggleIsShowBackdrop(true));
+    await dispatch(actions.setError(error));
+  }
+}
 

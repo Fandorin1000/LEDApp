@@ -16,7 +16,7 @@ const StripCommentsBox = props => {
     commentsBox = (
       <div className={classes.commentsBox}>
         <h2>Отзывы про ленту:</h2>
-        {commentsArray.map(item => <CommentElement {...item} />)}
+        {commentsArray.map(item => <CommentElement key={item.id}{...item} />)}
         {isWaitGetNewComment ?
           <Spinner /> :
           <div className={classes.sendNewCommentBox}>

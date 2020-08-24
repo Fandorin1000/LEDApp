@@ -4,12 +4,6 @@ import Bag from '../../components/Bag/Bag';
 import { connect } from 'react-redux';
 import * as actions from '../../store/actions/index';
 class BagContainer extends Component {
-  componentDidMount() {
-    const { bagArray } = this.props
-    if (bagArray.length === 0) {
-      this.props.onGetProductsFromLS()
-    }
-  }
   increasedMetersAndPriceHandler = (id, price) => {
     this.props.onIncreasedMetersAndPrice(id, price)
   }
@@ -50,7 +44,6 @@ const mapStateToProps = state => ({
 
 })
 const mapDispatchToProps = dispatch => ({
-  onGetProductsFromLS: () => dispatch(actions.getProductsFromLS()),
   onIncreasedMetersAndPrice: (id, price) => dispatch(actions.increasedMetersAndPrice(id, price)),
   onDecreasedMetersAndPrice: (id, price) => dispatch(actions.decreasedMetersAndPrice(id, price)),
   onDeleteElementFromBag: (id) => dispatch(actions.deleteElementFromBagStart(id))
