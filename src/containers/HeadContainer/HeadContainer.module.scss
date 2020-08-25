@@ -5,14 +5,49 @@
   position: relative;
   border-bottom: 1px dotted grey;
 
+  .cartIconBox {
+    width: 35px;
+    height: 35px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+
+    img {
+      width: 100%;
+      height: auto;
+    }
+  }
+
   .logoBox {
     cursor: pointer
   }
 
 }
 
-@media screen and (min-width:1024px) {
-  .onlyMobile {
-    display: none;
+
+
+@media screen and (max-width:450px) {
+  .headContainer {
+    .logoBox {
+      width: 150px;
+    }
   }
+}
+
+@media screen and (min-width:400px) {
+  .headContainer {
+    .cartIconBox {
+      width: 60px;
+      height: 60px;
+    }
+  }
+}
+
+@media screen and (min-width:1024px) {
+  .headContainer {
+    .onlyMobile {
+      display: none;
+    }
+  }
+
 }

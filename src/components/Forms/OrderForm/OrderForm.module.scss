@@ -31,7 +31,7 @@ form {
         &:hover,
         &:focus,
         &:active {
-          border: 1px solid blue;
+          border: 1px solid #00AFE2;
         }
       }
 
@@ -45,7 +45,7 @@ form {
     border-radius: 5px;
     outline: none;
     border: 1px solid white;
-    background: blue;
+    background: #00AFE2;
     color: white;
     transition: all 0.3s ease-out;
     text-transform: uppercase;
@@ -53,9 +53,9 @@ form {
     font-size: 16px;
 
     &:hover {
-      border: 1px solid blue;
+      border: 1px solid #00AFE2;
       background: white;
-      color: blue;
+      color: #00AFE2;
     }
   }
 }

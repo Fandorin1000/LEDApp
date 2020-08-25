@@ -8,6 +8,8 @@ import { compose } from 'redux';
 import * as actions from '../../store/actions/index';
 import { connect } from 'react-redux';
 import SideDrawer from '../../components/Navigation/SideDrawer/SideDrawer';
+import cartIcon from '../../assets/cartIcon.jpg';
+import cartIconGreen from '../../assets/cartIconGreen.jpg';
 class HeadContainer extends Component {
   constructor(props) {
     super(props);
@@ -18,6 +20,9 @@ class HeadContainer extends Component {
     const { history } = this.props;
     history.push("/")
   }
+  toBagMoveHandler = () => {
+    this.props.history.push('/bag')
+  }
   openSideDrawerHandler = (param) => {
     const { onOpenSideDrawerHandler } = this.props
     onOpenSideDrawerHandler(param)
@@ -26,9 +31,17 @@ class HeadContainer extends Component {
     this.props.onCloseAllModals()
   }
   render() {
-    const { isShowSideDrawer, bagArray } = this.props
+    const { isShowSideDrawer, bagArray } = this.props;
+    const cssClassesCartIconBox = [classes.onlyMobile, classes.cartIconBox].join(' ');
     return (
       <div className={classes.headContainer}>
+        <div className={cssClassesCartIconBox}
+          onClick={this.toBagMoveHandler}
+          title="корзина">
+          {bagArray.length > 0 ?
+            <img src={cartIconGreen} alt="cart icon" /> :
+            <img src={cartIcon} alt="cart icon" />}
+        </div>
         <div
           title="На главную"
           className={classes.logoBox}
