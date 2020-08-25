@@ -32,7 +32,6 @@ class StripContainer extends Component {
     response ? alert('Товар уже в корзине!') : this.props.onAddToBagProduct(bagArray, product)
   }
   setNewCommentHandler = (stripId, newCommentObject) => {
-    console.log(stripId, newCommentObject)
     this.props.onSetNewCommentHandler(stripId, newCommentObject)
   }
   render() {

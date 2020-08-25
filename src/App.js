@@ -17,10 +17,14 @@ class App extends Component {
     super(props);
     this.closeAllModalsHandler = this.closeAllModalsHandler.bind(this)
   }
-  componentDidMount() {
+  async componentDidMount() {
     const { bagArray } = this.props
     if (bagArray.length === 0) {
-      this.props.onGetProductsFromLS()
+      await this.props.onGetProductsFromLS()
+    }
+    if (document.documentElement.offsetWidth > 843) {
+      await this.props.onToggleIsShowSortList()
+      await this.props.onToggleIsShowFilterList()
     }
   }
   closeAllModalsHandler = () => {
@@ -29,7 +33,6 @@ class App extends Component {
   }
   render() {
     const { isShowBackdrop, error } = this.props;
-    console.log(error)
     return (
       <div className={classes.app}>
         <Backdrop
@@ -74,7 +77,9 @@ const mapStateToProps = state => ({
 })
 const mapDispatchToProps = dispatch => ({
   onCloseAllModals: () => dispatch(actions.closeAllModals()),
-  onGetProductsFromLS: () => dispatch(actions.getProductsFromLS())
+  onGetProductsFromLS: () => dispatch(actions.getProductsFromLS()),
+  onToggleIsShowSortList: () => dispatch(actions.toggleIsShowSortList()),
+  onToggleIsShowFilterList: () => dispatch(actions.toggleIsShowFilterList())
 })
 export default compose(
   connect(mapStateToProps, mapDispatchToProps),

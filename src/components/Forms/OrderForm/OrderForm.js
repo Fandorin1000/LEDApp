@@ -18,6 +18,18 @@ const OrderForm = props => {
     }
     return error;
   }
+  const validateUserEnteredInTextarea = value => {
+    let error;
+    if (!value) {
+      return error;
+    } else if (value.trim().length < 3) {
+      error = 'Длинна должна быть не менее 3 символов'
+    } else if (value.trim().length > 250) {
+      error = `Ууух и настрочили, не более 250 символов должно быть!
+      Сейчас: ${value.length} символов.`
+    }
+    return error;
+  }
   const validateUserEnteredNumber = value => {
     let error;
     const enteredValue = String(value).split('').length;
@@ -123,7 +135,7 @@ const OrderForm = props => {
                     as="textarea"
                     name="clientMessage"
                     placeholder="Дополнительные пожелания"
-                    validate={validateUserEnteredData}
+                    validate={validateUserEnteredInTextarea}
                   />
                 </div>
                 {errors.clientMessage && touched.clientMessage && <div className={classes.errorMessageBox}><span>{errors.clientMessage}</span></div>}

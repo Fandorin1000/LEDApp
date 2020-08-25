@@ -19,10 +19,6 @@ class StripsContainer extends Component {
   }
   async componentDidMount() {
     await this.props.onGetStrips();
-    if (document.documentElement.offsetWidth > 843) {
-      await this.toggleIsShowSortListHandler()
-      await this.toggleIsShowFilterListHandler()
-    }
   }
 
   addToCurrentFilterArgumentsNewPartHandler = (event) => {
@@ -152,8 +148,6 @@ const mapDispatchToProps = dispatch => ({
   onFilteredWarmLight: (strips) => dispatch(actions.filteredWarmLight(strips)),
   onFilteredNeutralLight: (strips) => dispatch(actions.filteredNeutralLight(strips)),
   onFilteredColdLight: (strips) => dispatch(actions.filteredColdLight(strips)),
-  onToggleIsShowSortList: () => dispatch(actions.toggleIsShowSortList()),
-  onToggleIsShowFilterList: () => dispatch(actions.toggleIsShowFilterList())
 })
 
 export default compose(

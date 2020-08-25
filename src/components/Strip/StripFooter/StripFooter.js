@@ -7,7 +7,6 @@ const StripFooter = props => {
   const { isWaitGetStrip, strip } = props;
 
   let stripFooter = null;
-  console.log(strip)
   if (isWaitGetStrip) {
     stripFooter = <Spinner />
   }

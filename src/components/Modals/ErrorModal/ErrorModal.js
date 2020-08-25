@@ -2,7 +2,6 @@ import React from 'react';
 import classes from './ErrorModal.module.scss';
 
 const ErrorModal = props => {
-  console.log(props);
 
   return props.error ?
     <div className={classes.errorModalBox} onClick={props.clicked}>

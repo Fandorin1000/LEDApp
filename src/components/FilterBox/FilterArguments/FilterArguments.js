@@ -3,7 +3,6 @@ import classes from './FilterArguments.module.scss';
 import Auxiliary from '../../../hoc/Auxiliary';
 const FilterArguments = props => {
   const { filterElementOfArguments } = props;
-  console.log(filterElementOfArguments)
   let renderClickedFilterArguments;
   let filterElementOfArgumentsUpdated;
   if (filterElementOfArguments.length > 0) {

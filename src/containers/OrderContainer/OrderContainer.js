@@ -4,8 +4,11 @@ import Order from '../../components/Order/Order';
 import * as actions from '../../store/actions/index';
 import { connect } from 'react-redux';
 class OrderContainer extends Component {
+  // constructor(props) {
+  //   super(props);
+
+  // }
   sendOrderHandler = (orderObject) => {
-    console.log(orderObject)
     this.props.onSendOrder(orderObject)
   }
   closeOrderSuccessModalHandler = () => {
@@ -13,7 +16,6 @@ class OrderContainer extends Component {
   }
   render() {
     const { isShowOrderSuccessModal, bagArray, isWaitSendOrderData } = this.props;
-    console.log(this.props.isShowOrderSuccessModal)
     return (
       <div className={classes.orderContainerBox}>
         <Order
