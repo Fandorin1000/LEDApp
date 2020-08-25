@@ -5,7 +5,7 @@
   padding-left: 10px;
 
   div {
-    width: 100%;
+    margin: 5px auto;
   }
 
   .controlsBoxTitle {
@@ -17,6 +17,21 @@
   .controlsBoxButton {
     button {
       cursor: pointer;
+      margin: 10px auto;
+      display: flex;
+      padding: 5px 10px;
+      background: blue;
+      color: white;
+      border: 1px solid white;
+      transition: all 0.3s ease-out;
+      border-radius: 5px;
+      font-size: 16px;
+
+      &:hover {
+        background: white;
+        color: blue;
+        border: 1px solid blue;
+      }
     }
 
   }

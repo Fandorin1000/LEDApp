@@ -1,0 +1,28 @@
+form {
+  margin: 10px auto;
+
+  label {
+    font-weight: 900;
+    text-decoration: underline;
+    cursor: pointer;
+    display: block;
+  }
+
+  textarea {
+    width: 100%;
+    padding: 5px 10px;
+    box-sizing: border-box;
+    resize: none;
+    font-size: 14px;
+  }
+}
+
+.errorMessageBox {
+  margin: 10px auto;
+
+  span {
+    color: red;
+    font-weight: 900;
+
+  }
+}

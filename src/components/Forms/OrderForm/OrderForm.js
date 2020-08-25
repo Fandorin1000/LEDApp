@@ -33,7 +33,6 @@ const OrderForm = props => {
   }
   return (
     <Auxiliary>
-
       {isWaitSendOrderData ? <Spinner /> : <Formik
         initialValues={{ clientName: "", clientSurname: "", clientAdres: "", clientMessage: "", clientNumber: "" }}
         onSubmit={values => {
@@ -125,7 +124,6 @@ const OrderForm = props => {
                     name="clientMessage"
                     placeholder="Дополнительные пожелания"
                     validate={validateUserEnteredData}
-                    required
                   />
                 </div>
                 {errors.clientMessage && touched.clientMessage && <div className={classes.errorMessageBox}><span>{errors.clientMessage}</span></div>}

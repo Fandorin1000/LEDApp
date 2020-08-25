@@ -33,16 +33,20 @@ const FormNewComment = props => {
         {({ errors, touched }) => (
           <Form
             className={classes.formSendNewComment}>
+
             <div><label htmlFor="userComment">Оставь свой отзыв:</label></div>
+
+            {errors.userComment && touched.userComment &&
+              <div className={classes.errorMessageBox}><span>{errors.userComment}</span></div>}
             <Field
               id="userComment"
-              type="text"
+              as="textarea"
               name="userComment"
               placeholder="Оставь отзыв про опыт использования!"
+              rows="8"
               validate={validateUserCommentHandler}
             />
             <button type="submit">отправить</button>
-            {errors.userComment && touched.userComment && <div>{errors.userComment}</div>}
           </Form>
         )}
       </Formik>
