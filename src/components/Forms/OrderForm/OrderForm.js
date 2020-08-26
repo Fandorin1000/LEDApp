@@ -71,7 +71,7 @@ const OrderForm = props => {
             className={classes.formSendNewComment}>
             <div className={classes.formBox}>
               <div className={classes.formItem}>
-                <div><label htmlFor="clientName">Имя:</label></div>
+                <div><label htmlFor="clientName">Имя*:</label></div>
                 <div>
                   <Field
                     id="clientName"
@@ -85,7 +85,7 @@ const OrderForm = props => {
                 {errors.clientName && touched.clientName && <div className={classes.errorMessageBox}><span>{errors.clientName}</span></div>}
               </div>
               <div className={classes.formItem}>
-                <div><label htmlFor="clientSurname">Фамилия:</label></div>
+                <div><label htmlFor="clientSurname">Фамилия*:</label></div>
                 <div>
                   <Field
                     id="clientSurname"
@@ -99,7 +99,7 @@ const OrderForm = props => {
                 {errors.clientSurname && touched.clientSurname && <div className={classes.errorMessageBox}><span>{errors.clientSurname}</span></div>}
               </div>
               <div className={classes.formItem}>
-                <div><label htmlFor="clientAdres">Адрес доставки (или отделение почты):</label></div>
+                <div><label htmlFor="clientAdres">Адрес доставки (или отделение почты)*:</label></div>
                 <div>
                   <Field
                     id="clientAdres"
@@ -113,7 +113,7 @@ const OrderForm = props => {
                 {errors.clientAdres && touched.clientAdres && <div className={classes.errorMessageBox}><span>{errors.clientAdres}</span></div>}
               </div>
               <div className={classes.formItem}>
-                <div><label htmlFor="clientNumber">Номер телефона:</label></div>
+                <div><label htmlFor="clientNumber">Номер телефона*:</label></div>
                 <div>
                   <Field
                     id="clientNumber"

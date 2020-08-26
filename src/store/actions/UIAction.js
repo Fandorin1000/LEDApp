@@ -2,7 +2,7 @@ import * as actionTypes from './actionTypes';
 import * as actions from './index';
 
 export const toggleIsLoading = (payload) => ({ type: actionTypes.TOGGLE_IS_LOADING, payload });
-export const setError = (payload) => ({ type: actionTypes.SET_ERROR, error: payload });
+export const setError = (payload) => ({ type: actionTypes.SET_ERROR, payload });
 export const clearError = () => ({ type: actionTypes.CLEAR_ERROR, error: null });
 export const toggleIsWaitGetStrip = (payload) => ({ type: actionTypes.TOGGLE_IS_WAIT_GET_STRIP, payload });
 export const toggleIsShowBackdrop = (payload) => ({ type: actionTypes.TOGGLE_IS_SHOW_BACKDROP, payload });
@@ -21,15 +21,19 @@ const toggleIsScrollActive = (isShow) => {
     body.style.overflow = "auto"
 }
 
-
+export const setErrorAction = (errorData) => async dispatch => {
+  await dispatch(toggleIsShowBackdrop(true))
+  await dispatch(actions.setError(errorData))
+}
 export const closeAllModals = () => async dispatch => {
   try {
     await toggleIsScrollActive(false);
     await dispatch(toggleIsShowBackdrop(false));
     await dispatch(toggleIsShowSideDrawer(false));
-    await dispatch(toggleIsShowOrderSuccessModal(false))
+    await dispatch(toggleIsShowOrderSuccessModal(false));
+    await dispatch(setError(null));
   } catch (error) {
-    await dispatch(actions.setError(error.message));
+    await dispatch(setErrorAction(error));
   }
 };
 export const openSideDrawer = () => async dispatch => {
@@ -42,7 +46,7 @@ export const openSideDrawer = () => async dispatch => {
     await toggleIsScrollActive(false)
     await dispatch(toggleIsShowBackdrop(false));
     await dispatch(toggleIsShowSideDrawer(false));
-    await dispatch(actions.setError(error.message))
+    await dispatch(setErrorAction(error))
   }
 }
 

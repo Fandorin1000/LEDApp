@@ -6,6 +6,8 @@ const ErrorModal = props => {
   return props.error ?
     <div className={classes.errorModalBox} onClick={props.clicked}>
       <div><h2>Упс!</h2></div>
+
+      <div><span>{props.error.name}</span></div>
       <div><span>{props.error.message}</span></div>
     </div> :
     null

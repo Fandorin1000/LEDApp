@@ -16,7 +16,7 @@ export {
 export {
   toggleIsLoading,
   clearError,
-  setError,
+  setErrorAction,
   toggleIsWaitGetStrip,
   toggleIsShowBackdrop,
   openSideDrawer,
@@ -27,7 +27,8 @@ export {
   toggleIsShowSortList,
   toggleIsShowFilterList,
   toggleIsShowOrderSuccessModal,
-  toggleIsWaitSendOrderData
+  toggleIsWaitSendOrderData,
+  setError
 } from './UIAction';
 
 export {

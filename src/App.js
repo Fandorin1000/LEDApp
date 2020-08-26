@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component, Suspense } from 'react'
 import classes from './app.module.scss';
 import { Switch, Route, withRouter } from 'react-router';
 import StripsContainer from './containers/StripsContainer/StripsContainer';
@@ -9,14 +9,13 @@ import Backdrop from './components/UI/Backdrop/Backdrop';
 import * as actions from './store/actions/index';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
-import BagContainer from './containers/BagContainer/BagContainer';
-import OrderContainer from './containers/OrderContainer/OrderContainer';
 import ErrorModal from './components/Modals/ErrorModal/ErrorModal';
+import Spinner from './components/UI/Spinner/Spinner';
+
 class App extends Component {
-  constructor(props) {
-    super(props);
-    this.closeAllModalsHandler = this.closeAllModalsHandler.bind(this)
-  }
+  // constructor(props) {
+  //   super(props);
+  // }
   async componentDidMount() {
     const { bagArray } = this.props
     if (bagArray.length === 0) {
@@ -33,6 +32,16 @@ class App extends Component {
   }
   render() {
     const { isShowBackdrop, error } = this.props;
+
+    //lazy load start
+    const lazyLoadingBox = (
+      <div className={classes.centeredLoading}>
+        <Spinner />
+      </div>
+    )
+    const BagContainer = React.lazy(() => import('./containers/BagContainer/BagContainer'))
+    const OrderContainer = React.lazy(() => import('./containers/OrderContainer/OrderContainer'))
+    //lazy load end 
     return (
       <div className={classes.app}>
         <Backdrop
@@ -40,12 +49,11 @@ class App extends Component {
           clicked={this.closeAllModalsHandler}
         />
         <ErrorModal error={error} />
-
         <HeadContainer />
         <div className={classes.main}>
           <Switch>
             <Route
-              path="/strip/:stripId?"
+              path="/strips/strip/:stripId?"
               component={StripContainer} />
             <Route
               path="/about"
@@ -58,10 +66,12 @@ class App extends Component {
               render={() => <div>Delivery</div>} />
             <Route
               path="/bag"
-              component={BagContainer} />
+              render={() => (
+                <Suspense fallback={lazyLoadingBox}><BagContainer /></Suspense>)} />
             <Route
               path="/order"
-              component={OrderContainer} />
+              render={() => (
+                <Suspense fallback={lazyLoadingBox}><OrderContainer /></Suspense>)} />
             <Route exact path="/" component={StripsContainer} />
           </Switch>
         </div>
@@ -83,5 +93,4 @@ const mapDispatchToProps = dispatch => ({
 })
 export default compose(
   connect(mapStateToProps, mapDispatchToProps),
-  withRouter
-)(App)
+  withRouter)(App)

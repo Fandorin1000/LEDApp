@@ -15,6 +15,27 @@ form {
     resize: none;
     font-size: 14px;
   }
+
+  button {
+    display: block;
+    margin: 15px auto;
+    padding: 5px 10px;
+    border-radius: 5px;
+    outline: none;
+    border: 1px solid white;
+    background: #00AFE2;
+    color: white;
+    transition: all 0.3s ease-out;
+    text-transform: uppercase;
+    font-weight: 900;
+    font-size: 16px;
+
+    &:hover {
+      border: 1px solid #00AFE2;
+      background: white;
+      color: #00AFE2;
+    }
+  }
 }
 
 .errorMessageBox {

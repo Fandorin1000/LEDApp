@@ -15,7 +15,7 @@ export const deleteElementFromBagStart = id => async dispatch => {
     await dispatch(deleteElementFromBag(id))
   }
   catch (error) {
-    await dispatch(actions.setError(error.message))
+    await dispatch(actions.setErrorAction(error))
   }
 }
 
@@ -31,7 +31,7 @@ export const addToBagProductStart = (bagArray, product) => async dispatch => {
     await dispatch(addToBagProduct(newProduct))
     await alert(`${newProduct.name} добавлен в корзину!`)
   } catch (error) {
-    await (dispatch(actions.setError(error.message)))
+    await (dispatch(actions.setErrorAction(error)))
   }
 }
 
@@ -46,7 +46,7 @@ export const getProductsFromLS = () => async dispatch => {
     await dispatch(actions.toggleIsLoading(false))
   } catch (error) {
     await dispatch(actions.toggleIsLoading(false))
-    await (dispatch(actions.setError(error.message)))
+    await (dispatch(actions.setErrorAction(error)))
   }
 }
 export const sendOrderStartProgress = (orderData) => async dispatch => {
@@ -67,7 +67,7 @@ export const sendOrderStartProgress = (orderData) => async dispatch => {
   catch (error) {
     await dispatch(actions.toggleIsWaitSendOrderData(false));
     await dispatch(actions.toggleIsShowBackdrop(true));
-    await dispatch(actions.setError(error));
+    await dispatch(actions.setErrorAction(error));
   }
 }
 

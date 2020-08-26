@@ -19,10 +19,11 @@ export const getStripsRequest = () => async dispatch => {
   try {
     const response = await stripsAPI.getStrips()
     await dispatch(getStripsRequestSuccess(response))
-    dispatch(actions.toggleIsLoading(false))
-  } catch (error) {
     await dispatch(actions.toggleIsLoading(false))
-    await dispatch(actions.setError(error.message))
+  } catch (error) {
+    console.log(error)
+    await dispatch(actions.toggleIsLoading(false))
+    await dispatch(actions.setErrorAction(error))
   }
 }
 
@@ -33,23 +34,24 @@ export const getStripRequest = id => async dispatch => {
     const response = await stripsAPI.getStrip(id);
     await dispatch(getStripRequestSuccess(response));
     await dispatch(actions.toggleIsWaitGetStrip(false));
-    await dispatch(scrollToTop())
+    await scrollToTop()
   } catch (error) {
+    console.log(error)
     await dispatch(actions.toggleIsWaitGetStrip(false));
-    await dispatch(actions.setError(error.message));
+    dispatch(actions.setErrorAction(error));
   }
 }
 
 export const setNewComment = (index, comObj) => async dispatch => {
   try {
     await dispatch(actions.toggleIsWaitGetNewComment(true))
-    const response = await stripsAPI.setNewComment(index, comObj);
+    await stripsAPI.setNewComment(index, comObj);
     const stripResponse = await stripsAPI.getStrip(index);
     await dispatch(getStripRequestSuccess(stripResponse));
     await dispatch(actions.toggleIsWaitGetNewComment(false))
   } catch (error) {
     await dispatch(actions.toggleIsWaitGetNewComment(false))
-    await dispatch(actions.setError(error.message));
+    await dispatch(actions.setErrorAction(error));
   }
 }
 
@@ -62,7 +64,7 @@ export const sortedStripsStartLowPrice = (strips) => async dispatch => {
     await dispatch(actions.toggleIsWaitSort(false));
   } catch (error) {
     await dispatch(actions.toggleIsWaitSort(false));
-    await dispatch(actions.setError(error.message));
+    await dispatch(actions.setErrorAction(error));
   }
 }
 export const sortedStripsStartHighPrice = (strips) => async dispatch => {
@@ -73,7 +75,7 @@ export const sortedStripsStartHighPrice = (strips) => async dispatch => {
     await dispatch(actions.toggleIsWaitSort(false));
   } catch (error) {
     await dispatch(actions.toggleIsWaitSort(false));
-    await dispatch(actions.setError(error.message));
+    await dispatch(actions.setErrorAction(error));
   }
 }
 export const sortedStripsStartHighPower = (strips) => async dispatch => {
@@ -84,7 +86,7 @@ export const sortedStripsStartHighPower = (strips) => async dispatch => {
     await dispatch(actions.toggleIsWaitSort(false));
   } catch (error) {
     await dispatch(actions.toggleIsWaitSort(false));
-    await dispatch(actions.setError(error.message));
+    await dispatch(actions.setErrorAction(error));
   }
 }
 export const sortedStripsStartLowPower = (strips) => async dispatch => {
@@ -95,7 +97,7 @@ export const sortedStripsStartLowPower = (strips) => async dispatch => {
     await dispatch(actions.toggleIsWaitSort(false));
   } catch (error) {
     await dispatch(actions.toggleIsWaitSort(false));
-    await dispatch(actions.setError(error.message));
+    await dispatch(actions.setErrorAction(error));
   }
 }
 //sorted end
@@ -108,7 +110,7 @@ export const filteredTwelveVolts = (strips) => async dispatch => {
     await dispatch(actions.toggleIsWaitSort(false));
   } catch (error) {
     await dispatch(actions.toggleIsWaitSort(false));
-    await dispatch(actions.setError(error.message));
+    await dispatch(actions.setErrorAction(error));
   }
 }
 export const filteredTwentyFourVolts = (strips) => async dispatch => {
@@ -119,7 +121,7 @@ export const filteredTwentyFourVolts = (strips) => async dispatch => {
     await dispatch(actions.toggleIsWaitSort(false));
   } catch (error) {
     await dispatch(actions.toggleIsWaitSort(false));
-    await dispatch(actions.setError(error.message));
+    await dispatch(actions.setErrorAction(error));
   }
 }
 export const filteredWarmLight = (strips) => async dispatch => {
@@ -130,7 +132,7 @@ export const filteredWarmLight = (strips) => async dispatch => {
     await dispatch(actions.toggleIsWaitSort(false));
   } catch (error) {
     await dispatch(actions.toggleIsWaitSort(false));
-    await dispatch(actions.setError(error.message));
+    await dispatch(actions.setErrorAction(error));
   }
 }
 export const filteredNeutralLight = (strips) => async dispatch => {
@@ -141,7 +143,7 @@ export const filteredNeutralLight = (strips) => async dispatch => {
     await dispatch(actions.toggleIsWaitSort(false));
   } catch (error) {
     await dispatch(actions.toggleIsWaitSort(false));
-    await dispatch(actions.setError(error.message));
+    await dispatch(actions.setErrorAction(error));
   }
 }
 export const filteredColdLight = (strips) => async dispatch => {
@@ -152,7 +154,7 @@ export const filteredColdLight = (strips) => async dispatch => {
     await dispatch(actions.toggleIsWaitSort(false));
   } catch (error) {
     await dispatch(actions.toggleIsWaitSort(false));
-    await dispatch(actions.setError(error.message));
+    await dispatch(actions.setErrorAction(error));
   }
 }
 //filtered end

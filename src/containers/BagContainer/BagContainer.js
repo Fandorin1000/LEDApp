@@ -3,6 +3,8 @@ import classes from './BagContainer.module.scss';
 import Bag from '../../components/Bag/Bag';
 import { connect } from 'react-redux';
 import * as actions from '../../store/actions/index';
+import { withRouter } from 'react-router';
+import { compose } from 'redux';
 class BagContainer extends Component {
   increasedMetersAndPriceHandler = (id, price) => {
     this.props.onIncreasedMetersAndPrice(id, price)
@@ -48,4 +50,6 @@ const mapDispatchToProps = dispatch => ({
   onDecreasedMetersAndPrice: (id, price) => dispatch(actions.decreasedMetersAndPrice(id, price)),
   onDeleteElementFromBag: (id) => dispatch(actions.deleteElementFromBagStart(id))
 })
-export default connect(mapStateToProps, mapDispatchToProps)(BagContainer);
+export default compose(
+  connect(mapStateToProps, mapDispatchToProps),
+  withRouter)(BagContainer);

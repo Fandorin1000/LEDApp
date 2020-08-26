@@ -7,7 +7,7 @@ const instance = axios.create({
 
 export const stripsAPI = {
   getStrips() {
-    return instance.get(`strips.json`)
+    return instance.get(`strips.json?`)
       .then(response => response.data)
   },
   getStrip(index) {
@@ -20,4 +20,4 @@ export const stripsAPI = {
   sendNewOrder(orderData) {
     return instance.post(`orders.json`, orderData)
   }
-}
+};

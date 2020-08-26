@@ -6,7 +6,6 @@ import { connect } from 'react-redux';
 class OrderContainer extends Component {
   // constructor(props) {
   //   super(props);
-
   // }
   sendOrderHandler = (orderObject) => {
     this.props.onSendOrder(orderObject)

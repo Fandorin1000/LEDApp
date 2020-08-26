@@ -73,7 +73,7 @@ class StripsContainer extends Component {
       stripsElement = <Spinner />
     }
     if (strips) {
-      stripsElement = strips.map(element => <NavLink key={element.id} to={`strip/${element.id - 1}`}>
+      stripsElement = strips.map(element => <NavLink key={element.id} to={`strips/strip/${element.id - 1}`}>
         <StripsElement {...element} />
       </NavLink>)
     }
