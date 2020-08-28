@@ -11,7 +11,7 @@ const HeadElementBag = props => {
       </div>
       <div className={classes.nameBox}>
         <NavLink
-          to={`strip/${id - 1}`}
+          to={`strips/strip/${id - 1}`}
           title={`Перейти к ${name}`}>
           <h2>{name}</h2>
         </NavLink>

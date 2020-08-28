@@ -11,7 +11,6 @@ import StripCharacteristics from '../../components/Strip/StripFooter/StripCharac
 import StripCommentsBox from '../../components/Strip/StripFooter/CommentsBox/StripCommentsBox';
 import Auxiliary from '../../hoc/Auxiliary';
 import Spinner from '../../components/UI/Spinner/Spinner';
-
 class StripContainer extends Component {
   componentDidMount() {
     this.props.onGetStripRequest(this.props.match.params.stripId)
@@ -34,6 +33,14 @@ class StripContainer extends Component {
   setNewCommentHandler = (stripId, newCommentObject) => {
     this.props.onSetNewCommentHandler(stripId, newCommentObject)
   }
+  tabSelectHandler = (selectedTab) => {
+    // The active tab must be set into the state so that
+    // the Tabs component knows about the change and re-renders.
+    this.setState({
+      activeTab: selectedTab
+    }, () => console.log(this.state.activeTab));
+  }
+
   render() {
     const { strip, isWaitGetStrip, isWaitGetNewComment } = this.props;
     let imgSrc = null;
@@ -58,6 +65,7 @@ class StripContainer extends Component {
                 clickedBtn={this.addToBagProductHandler} />
             </div>
             <div className={classes.stripFooterBox}>
+
               <StripDescription description={description} />
               <StripCharacteristics characteristics={characteristics} />
               <StripCommentsBox

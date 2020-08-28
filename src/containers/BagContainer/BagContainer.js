@@ -41,8 +41,7 @@ class BagContainer extends Component {
 }
 
 const mapStateToProps = state => ({
-  bagArray: state.bagPage.bagArray,
-  isLoading: state.UIPage.isLoading
+  bagArray: state.bagPage.bagArray
 
 })
 const mapDispatchToProps = dispatch => ({

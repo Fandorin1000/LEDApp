@@ -11,7 +11,7 @@ import { compose } from 'redux';
 import { connect } from 'react-redux';
 import ErrorModal from './components/Modals/ErrorModal/ErrorModal';
 import Spinner from './components/UI/Spinner/Spinner';
-
+import BagContainer from './containers/BagContainer/BagContainer';
 class App extends Component {
   // constructor(props) {
   //   super(props);
@@ -32,15 +32,16 @@ class App extends Component {
   }
   render() {
     const { isShowBackdrop, error } = this.props;
-
     //lazy load start
     const lazyLoadingBox = (
       <div className={classes.centeredLoading}>
         <Spinner />
       </div>
     )
-    const BagContainer = React.lazy(() => import('./containers/BagContainer/BagContainer'))
-    const OrderContainer = React.lazy(() => import('./containers/OrderContainer/OrderContainer'))
+    const OrderLazy = React.lazy(() => import('./containers/OrderContainer/OrderContainer'))
+    const AboutLazy = React.lazy(() => import('./containers/AboutContainer/AboutContainer'))
+    const ContactsLazy = React.lazy(() => import('./containers/ContactsContainer/ContactsContainer'))
+    const DeliveryLazy = React.lazy(() => import('./containers/DeliveryContainer/DeliveryContainer'))
     //lazy load end 
     return (
       <div className={classes.app}>
@@ -57,21 +58,20 @@ class App extends Component {
               component={StripContainer} />
             <Route
               path="/about"
-              render={() => <div>About</div>} />
+              render={() => <Suspense fallback={lazyLoadingBox}><AboutLazy /></Suspense>} />
             <Route
               path="/contacts"
-              render={() => <div>Contacts</div>} />
+              render={() => <Suspense fallback={lazyLoadingBox}><ContactsLazy /></Suspense>} />
             <Route
               path="/delivery"
-              render={() => <div>Delivery</div>} />
+              render={() => <Suspense fallback={lazyLoadingBox}><DeliveryLazy /></Suspense>} />
             <Route
               path="/bag"
-              render={() => (
-                <Suspense fallback={lazyLoadingBox}><BagContainer /></Suspense>)} />
+              component={BagContainer} />
             <Route
               path="/order"
               render={() => (
-                <Suspense fallback={lazyLoadingBox}><OrderContainer /></Suspense>)} />
+                <Suspense fallback={lazyLoadingBox}><OrderLazy /></Suspense>)} />
             <Route exact path="/" component={StripsContainer} />
           </Switch>
         </div>

@@ -20,7 +20,7 @@ const FooterElementBag = props => {
         <span>Цена за 1 метр: {price} грн.</span>
       </div>
       <div className={classes.footerBagElementPrice}>
-        <span>Цена всего: <b>{currentPrice} грн.</b> за<b>{amount}</b> метр.      </span>
+        <span>Цена всего: <b>{currentPrice} грн.</b> за<b> {amount}</b> метр.</span>
       </div>
     </div>
   )
