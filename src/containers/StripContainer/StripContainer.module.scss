@@ -2,13 +2,17 @@
   text-decoration: none;
   padding: 10px 0;
 
+
+
   .stripHeadBox {
     width: 100%;
     display: flex;
     justify-content: space-between;
+    box-shadow: 0 1px 5px grey;
 
     div {
       width: 100%;
+
     }
   }
 

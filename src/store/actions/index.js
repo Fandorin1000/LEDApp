@@ -10,7 +10,8 @@ export {
   filteredWarmLight,
   filteredNeutralLight,
   filteredColdLight,
-  setNewComment
+  setNewComment,
+  sendNewRatingNumberAction
 } from './stripsAction';
 
 export {
@@ -28,7 +29,8 @@ export {
   toggleIsShowFilterList,
   toggleIsShowOrderSuccessModal,
   toggleIsWaitSendOrderData,
-  setError
+  setError,
+  toggleIsWaitSendNewRatingNumber
 } from './UIAction';
 
 export {

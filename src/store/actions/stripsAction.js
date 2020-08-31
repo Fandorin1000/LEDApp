@@ -158,3 +158,18 @@ export const filteredColdLight = (strips) => async dispatch => {
   }
 }
 //filtered end
+
+export const sendNewRatingNumberAction = (id, number) => async dispatch => {
+  try {
+    await dispatch(actions.toggleIsWaitSendNewRatingNumber(true));
+    await stripsAPI.sendNewRatingNumber(id, number);
+    const responseStrip = await stripsAPI.getStrip(id - 1);
+    await dispatch(getStripRequestSuccess(responseStrip));
+    await dispatch(actions.toggleIsWaitSendNewRatingNumber(false));
+  }
+  catch (error) {
+    await dispatch(actions.toggleIsWaitSendNewRatingNumber(false));
+    await dispatch(actions.setErrorAction(error));
+
+  }
+}

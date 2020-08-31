@@ -1,0 +1,37 @@
+.formSendNewRating {
+  box-shadow: 0 1px 5px blue;
+  padding: 7px;
+  box-sizing: border-box;
+  display: block;
+
+  h2 {
+    margin: 0;
+  }
+
+  select {
+    cursor: pointer;
+  }
+}
+
+.errorMessageBox {
+  color: red;
+}
+
+.spinnerWrapper {
+  color: green;
+  animation: pending 2s infinite alternate-reverse;
+}
+
+@keyframes pending {
+  0% {
+    color: green
+  }
+
+  50% {
+    color: yellow;
+  }
+
+  100% {
+    color: red;
+  }
+}

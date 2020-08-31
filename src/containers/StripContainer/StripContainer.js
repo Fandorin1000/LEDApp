@@ -40,6 +40,10 @@ class StripContainer extends Component {
       activeTab: selectedTab
     }, () => console.log(this.state.activeTab));
   }
+  sendNewRatingNumberHandler = (id, number) => {
+    console.log(number)
+    this.props.onSendNewRatingNumber(id, number)
+  }
 
   render() {
     const { strip, isWaitGetStrip, isWaitGetNewComment } = this.props;
@@ -62,7 +66,8 @@ class StripContainer extends Component {
               <StripImg imgSrc={imgSrc} />
               <StripControls
                 {...this.props}
-                clickedBtn={this.addToBagProductHandler} />
+                clickedBtn={this.addToBagProductHandler}
+                sendNewRatingNumber={(number) => this.sendNewRatingNumberHandler(strip.id, number)} />
             </div>
             <div className={classes.stripFooterBox}>
 
@@ -84,13 +89,15 @@ const mapStateToProps = state => ({
   strip: state.stripsPage.strip,
   isWaitGetStrip: state.UIPage.isWaitGetStrip,
   isWaitGetNewComment: state.UIPage.isWaitGetNewComment,
+  isWaitSendNewRatingNumber: state.UIPage.isWaitSendNewRatingNumber,
   bagArray: state.bagPage.bagArray
 })
 const mapDispatchToProps = dispatch => ({
   onGetStripRequest: (id) => dispatch(actions.getStripRequest(id)),
   onAddToBagProduct: (bagArray, product) => dispatch(actions.addToBagProductStart(bagArray, product)),
   onSetNewCommentHandler: (productIndexInMyBadBackend, setNewCommentHandler) =>
-    dispatch(actions.setNewComment(productIndexInMyBadBackend, setNewCommentHandler))
+    dispatch(actions.setNewComment(productIndexInMyBadBackend, setNewCommentHandler)),
+  onSendNewRatingNumber: (id, newRatingNumber) => dispatch(actions.sendNewRatingNumberAction(id, newRatingNumber))
 })
 export default compose(
   connect(mapStateToProps, mapDispatchToProps),

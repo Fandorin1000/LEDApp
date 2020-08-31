@@ -19,5 +19,8 @@ export const stripsAPI = {
   },
   sendNewOrder(orderData) {
     return instance.post(`orders.json`, orderData)
+  },
+  sendNewRatingNumber(id, number) {
+    return instance.post(`strips/${id - 1}/rating.json`, number)
   }
 };

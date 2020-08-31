@@ -12,7 +12,8 @@ const initialState = {
   isShowSortList: false,
   isShowFilterList: false,
   isShowOrderSuccessModal: false,
-  isWaitSendOrderData: false
+  isWaitSendOrderData: false,
+  isWaitSendNewRatingNumber: false
 }
 
 const toggleIsLoading = (state, action) => updatedObject(state, { isLoading: action.payload });
@@ -27,6 +28,7 @@ const toggleIsShowSortList = (state) => updatedObject(state, { isShowSortList: !
 const toggleIsShowFilterList = (state) => updatedObject(state, { isShowFilterList: !state.isShowFilterList });
 const toggleIsShowOrderSuccess = (state, action) => updatedObject(state, { isShowOrderSuccessModal: action.payload });
 const toggleIsWaitSendOrderData = (state, action) => updatedObject(state, { isWaitSendOrderData: action.payload });
+const toggleIsWaitSendNewRatingNumber = (state, action) => updatedObject(state, { isWaitSendNewRatingNumber: action.payload });
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
@@ -42,6 +44,7 @@ const reducer = (state = initialState, action) => {
     case (actionTypes.TOGGLE_IS_SHOW_FILTER_LIST): return toggleIsShowFilterList(state, action)
     case (actionTypes.TOGGLE_IS_SHOW_ORDER_SUCCESS_MODAL): return toggleIsShowOrderSuccess(state, action);
     case (actionTypes.TOGGLE_IS_WAIT_SEND_ORDER_DATA): return toggleIsWaitSendOrderData(state, action);
+    case (actionTypes.TOGGLE_IS_WAIT_SEND_NEW_RATING_NUMBER): return toggleIsWaitSendNewRatingNumber(state, action);
     default: return state;
   }
 }

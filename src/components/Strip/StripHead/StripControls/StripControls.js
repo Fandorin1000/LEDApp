@@ -1,11 +1,18 @@
 import React from 'react';
 import classes from './StripControls.module.scss';
 import Auxiliary from '../../../../hoc/Auxiliary';
+import StripRatingForm from '../../../Forms/StripRatingForm/StripRatingForm';
+import Spinner from '../../../UI/Spinner/Spinner';
 
 const StripControls = props => {
-  const { strip } = props;
+  const { strip, sendNewRatingNumber, isWaitSendNewRatingNumber } = props;
   let stripControls = null;
   if (strip) {
+    const ratingArray = [];
+    for (const item in strip.rating) {
+      ratingArray.push(strip.rating[item])
+    }
+    console.log(ratingArray)
     stripControls =
       <Auxiliary>
         <div className={classes.controlsBoxTitle}>
@@ -21,10 +28,13 @@ const StripControls = props => {
           <span>На складе: {strip.metersInStore} метров</span>
         </div>
         <div className={classes.controlsBoxRating}>
-          <span>Рейтинг: strip.rating/5</span>
+          <StripRatingForm
+            isWaitSendNewRatingNumber={isWaitSendNewRatingNumber}
+            sendNewRatingNumber={(number) => sendNewRatingNumber(number)}
+            ratingArray={ratingArray} />
         </div>
         <div className={classes.controlsBoxPrice}>
-          <span>Цена: {strip.price} грн. за 1 метр </span>
+          <span><strong>Цена: {strip.price} грн. за 1 метр</strong> </span>
         </div>
         <div className={classes.controlsBoxButton}>
           <button onClick={() => props.clickedBtn(strip)} >
