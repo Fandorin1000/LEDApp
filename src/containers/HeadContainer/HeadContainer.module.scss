@@ -25,7 +25,7 @@
 
     img {
       width: 100%;
-      height: auto;
+      max-height: 100px;
     }
   }
 
@@ -39,7 +39,6 @@
   z-index: 1000;
   transition: all .5s ease-out;
   animation: untransparent .5s forwards;
-
 }
 
 

@@ -2,7 +2,6 @@ import React from 'react';
 import classes from './StripRatingForm.module.scss';
 import { Formik, Form, Field } from 'formik';
 import Auxiliary from '../../../hoc/Auxiliary';
-import Spinner from '../../UI/Spinner/Spinner';
 
 const StripRatingForm = props => {
   const { ratingArray, sendNewRatingNumber, isWaitSendNewRatingNumber } = props;

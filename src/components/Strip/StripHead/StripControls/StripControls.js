@@ -2,7 +2,6 @@ import React from 'react';
 import classes from './StripControls.module.scss';
 import Auxiliary from '../../../../hoc/Auxiliary';
 import StripRatingForm from '../../../Forms/StripRatingForm/StripRatingForm';
-import Spinner from '../../../UI/Spinner/Spinner';
 
 const StripControls = props => {
   const { strip, sendNewRatingNumber, isWaitSendNewRatingNumber } = props;
@@ -12,7 +11,6 @@ const StripControls = props => {
     for (const item in strip.rating) {
       ratingArray.push(strip.rating[item])
     }
-    console.log(ratingArray)
     stripControls =
       <Auxiliary>
         <div className={classes.controlsBoxTitle}>

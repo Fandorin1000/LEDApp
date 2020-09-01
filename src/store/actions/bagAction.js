@@ -56,7 +56,6 @@ export const sendOrderStartProgress = (orderData) => async dispatch => {
     await dispatch(actions.toggleIsWaitSendOrderData(false));
     await dispatch(actions.toggleIsShowBackdrop(true));
     await dispatch(actions.toggleIsShowOrderSuccessModal(true));
-
     await setTimeout(() => {
       dispatch(actions.toggleIsShowBackdrop(false));
       dispatch(actions.toggleIsShowOrderSuccessModal(false));

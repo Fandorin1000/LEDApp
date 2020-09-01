@@ -16,34 +16,30 @@ class HeadContainer extends Component {
     this.state = {
       fixed: false
     }
-    this.toMainMoveHandler = this.toMainMoveHandler.bind(this);
-    this.openSideDrawerHandler = this.openSideDrawerHandler.bind(this);
   }
   componentDidMount() {
     window.addEventListener('scroll', this.scrollObserver)
   }
-  componentWillUnmount() {
-    window.removeEventListener('scroll', this.scrollObserver)
-  }
-  //scroll header fixed
+  //scroll header fixed observer
   scrollObserver = () => {
-    console.log(window.scrollY)
     if (window.scrollY > 140) {
       this.setState({ fixed: true })
     } else {
       this.setState({ fixed: false })
     }
   }
+  //push to main page
   toMainMoveHandler = () => {
     const { history } = this.props;
     history.push("/")
   }
+  //push to bag
   toBagMoveHandler = () => {
     this.props.history.push('/bag')
   }
-  openSideDrawerHandler = (param) => {
+  openSideDrawerHandler = () => {
     const { onOpenSideDrawerHandler } = this.props
-    onOpenSideDrawerHandler(param)
+    onOpenSideDrawerHandler()
   }
   closeAllModalHandler = () => {
     this.props.onCloseAllModals()
@@ -53,13 +49,20 @@ class HeadContainer extends Component {
     const cssClassesCartIconBox = [classes.onlyMobile, classes.cartIconBox].join(' ');
     return (
       <div
-        className={this.state.fixed ? [classes.headContainer, classes.fixed].join(' ') : [classes.headContainer].join(' ')}>
+        className={this.state.fixed ?
+          [classes.headContainer, classes.fixed].join(' ') :
+          [classes.headContainer].join(' ')}>
         <div className={cssClassesCartIconBox}
-          onClick={this.toBagMoveHandler}
-          title="корзина">
+          onClick={this.toBagMoveHandler}>
           {bagArray.length > 0 ?
-            <img src={cartIconGreen} alt="cart icon" /> :
-            <img src={cartIcon} alt="cart icon" />}
+            <img
+              src={cartIconGreen}
+              alt="cart icon"
+              title="корзина" /> :
+            <img
+              src={cartIcon}
+              alt="cart icon"
+              title="корзина (пустая)" />}
         </div>
         <div
           title="На главную"
