@@ -30,6 +30,8 @@ class HeadContainer extends Component {
     console.log(window.scrollY)
     if (window.scrollY > 140) {
       this.setState({ fixed: true })
+    } else {
+      this.setState({ fixed: false })
     }
   }
   toMainMoveHandler = () => {

@@ -4,6 +4,7 @@
   align-items: center;
   position: relative;
   border-bottom: 1px dotted grey;
+  transition: all .3s ease-out;
 
   .cartIconBox {
     width: 50px;
@@ -34,8 +35,11 @@
   position: sticky;
   width: 100%;
   top: 0;
-  background: #fff;
+  background: transparent;
   z-index: 1000;
+  transition: all .5s ease-out;
+  animation: untransparent .5s forwards;
+
 }
 
 
@@ -77,5 +81,15 @@
 
   100% {
     transform: scale(1);
+  }
+}
+
+@keyframes untransparent {
+  0% {
+    background: transparent
+  }
+
+  100% {
+    background: #fff
   }
 }
