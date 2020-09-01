@@ -13,8 +13,24 @@ import cartIconGreen from '../../assets/cartIconGreen.jpg';
 class HeadContainer extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      fixed: false
+    }
     this.toMainMoveHandler = this.toMainMoveHandler.bind(this);
     this.openSideDrawerHandler = this.openSideDrawerHandler.bind(this);
+  }
+  componentDidMount() {
+    window.addEventListener('scroll', this.scrollObserver)
+  }
+  componentWillUnmount() {
+    window.removeEventListener('scroll', this.scrollObserver)
+  }
+  //scroll header fixed
+  scrollObserver = () => {
+    console.log(window.scrollY)
+    if (window.scrollY > 140) {
+      this.setState({ fixed: true })
+    }
   }
   toMainMoveHandler = () => {
     const { history } = this.props;
@@ -34,7 +50,8 @@ class HeadContainer extends Component {
     const { isShowSideDrawer, bagArray } = this.props;
     const cssClassesCartIconBox = [classes.onlyMobile, classes.cartIconBox].join(' ');
     return (
-      <div className={classes.headContainer}>
+      <div
+        className={this.state.fixed ? [classes.headContainer, classes.fixed].join(' ') : [classes.headContainer].join(' ')}>
         <div className={cssClassesCartIconBox}
           onClick={this.toBagMoveHandler}
           title="корзина">

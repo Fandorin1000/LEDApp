@@ -26,7 +26,9 @@ const StripRatingForm = props => {
               <div>
                 <h2>Рейтинг</h2>
                 {ratingArray.length > 0 ?
-                  <span>Текущая оценка товара: <b>{ratingRender.toFixed(1)}</b> из 5 <div>Всего оценок: {ratingArray.length}</div></span> :
+                  <span>Текущая оценка товара: <b>{ratingRender.toFixed(1)}</b> из 5
+                    <br /><span>Всего оценок: {ratingArray.length}</span>
+                  </span> :
                   <span>Ещё нет оценок этого товара</span>}
               </div>
               <div>

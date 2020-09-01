@@ -6,7 +6,6 @@
 
   div {
     box-sizing: border-box;
-    margin: 5px auto;
   }
 
   .controlsBoxTitle {
@@ -50,9 +49,11 @@
 @media screen and (max-width:600px) {
   .controlsBox {
     flex-direction: column;
+    padding: 0;
 
     div {
-      padding: 7px;
+      padding: 3px;
+      box-sizing: border-box;
     }
 
     .controlsBoxButton {

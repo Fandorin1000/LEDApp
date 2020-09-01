@@ -19,13 +19,13 @@ const StripControls = props => {
           <h1>{strip.name}</h1>
         </div>
         <div className={classes.controlsBoxCode}>
-          <span>Код товара: {strip.code} </span>
+          <span><b>Код товара:</b> {strip.code} </span>
         </div>
         <div className={classes.controlsBoxArtikul}>
-          <span>Артикул: {strip.artikul} </span>
+          <span><b>Артикул:</b> {strip.artikul} </span>
         </div>
         <div className={classes.controlsBoxMeters}>
-          <span>На складе: {strip.metersInStore} метров</span>
+          <span><b>На складе:</b> {strip.metersInStore} метров</span>
         </div>
         <div className={classes.controlsBoxRating}>
           <StripRatingForm

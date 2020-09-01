@@ -16,7 +16,7 @@ class App extends Component {
   // constructor(props) {
   //   super(props);
   // }
-  async componentDidMount() {
+  async componentDidMount(e) {
     const { bagArray } = this.props
     if (bagArray.length === 0) {
       await this.props.onGetProductsFromLS()
@@ -25,7 +25,9 @@ class App extends Component {
       await this.props.onToggleIsShowSortList()
       await this.props.onToggleIsShowFilterList()
     }
+
   }
+
   closeAllModalsHandler = () => {
     const { onCloseAllModals } = this.props;
     onCloseAllModals()
