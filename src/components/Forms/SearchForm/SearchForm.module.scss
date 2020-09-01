@@ -1,0 +1,72 @@
+.searchForm {
+  position: relative;
+
+  .searchFormInner {
+    display: flex;
+    height: 21px;
+    box-sizing: border-box;
+    align-items: center;
+    position: relative;
+
+    input {
+      box-sizing: border-box;
+      border: 1px solid black;
+      border-radius: 5px;
+      outline: none;
+      padding: 2px 47px 2px 5px;
+
+      &:hover,
+      &:active,
+      &:focus {
+        border: 1px solid #00AFE2;
+      }
+    }
+
+    button {
+      position: absolute;
+      right: 1px;
+      border: none;
+      border-radius: 0 5px 5px 0;
+      padding: 0;
+      margin: auto;
+      height: calc(100% - 2px);
+      box-sizing: border-box;
+      background: #00AFE2;
+      color: #fff;
+      padding: 0 2px;
+
+
+      &:hover {
+        border-left: 1px solid #00AFE2;
+        background: white;
+        color: #00AFE2;
+      }
+    }
+  }
+
+  .errorMessageBox {
+    box-sizing: border-box;
+    position: absolute;
+    top: 105%;
+    border: 1px dashed red;
+    border-radius: 5px;
+    padding: 5px;
+    width: 100%;
+    transition: all .5s ease-out;
+    animation: animate .5s forwards;
+    transform: translateY(-100%);
+    z-index: 100;
+    background: #fff;
+    color: black;
+  }
+}
+
+@keyframes animate {
+  0% {
+    transform: translateY(-100%);
+  }
+
+  100% {
+    transform: translateY(0);
+  }
+}

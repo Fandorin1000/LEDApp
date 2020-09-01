@@ -10,6 +10,7 @@ import { connect } from 'react-redux';
 import SideDrawer from '../../components/Navigation/SideDrawer/SideDrawer';
 import cartIcon from '../../assets/cartIcon.jpg';
 import cartIconGreen from '../../assets/cartIconGreen.jpg';
+import SearchForm from '../../components/Forms/SearchForm/SearchForm';
 class HeadContainer extends Component {
   constructor(props) {
     super(props);
@@ -72,6 +73,7 @@ class HeadContainer extends Component {
             src='https://led-stil.com/image/catalog/led/logo1.png'
             alt="led-stil logo elephant" />
         </div>
+        <SearchForm />
         <DrawerToggle clicked={this.openSideDrawerHandler} />
         <NavigationItems isShowSideDrawer={isShowSideDrawer}>
           <NavigationItem link="/About">О компании</NavigationItem>
