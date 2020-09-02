@@ -33,6 +33,7 @@ class HeadContainer extends Component {
   toMainMoveHandler = () => {
     const { history } = this.props;
     history.push("/")
+    this.props.onGetStrips()
   }
   //push to bag
   toBagMoveHandler = () => {
@@ -101,7 +102,8 @@ const mapStateToProps = state => ({
 })
 const mapDispatchToProps = dispatch => ({
   onOpenSideDrawerHandler: () => dispatch(actions.openSideDrawer()),
-  onCloseAllModals: () => dispatch(actions.closeAllModals())
+  onCloseAllModals: () => dispatch(actions.closeAllModals()),
+  onGetStrips: () => dispatch(actions.getStripsRequest()),
 })
 export default compose(
   connect(mapStateToProps, mapDispatchToProps),

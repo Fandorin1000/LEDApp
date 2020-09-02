@@ -26,7 +26,10 @@ class SearchForm extends Component {
   observeFoundElementClickHandler = e => {
     if (e.target.tagName === "A") {
       setTimeout(() => {
-        this.setState({ searchInputValue: '' })
+        this.setState({
+          searchInputValue: '',
+          foundStrips: null
+        })
       }, 1)
     }
   }
@@ -40,7 +43,9 @@ class SearchForm extends Component {
     this.props.history.push('/search')
   }
   inputChangeValueHandler = e => {
-    const value = e.target.value;
+
+    const value = e.target.value.toUpperCase();
+    console.log(value)
     if (this.state.touched === false) {
       this.setState({ touched: true })
     }
@@ -67,7 +72,6 @@ class SearchForm extends Component {
         invalid: true,
         foundStrips: null
       })
-      console.log('invalid true')
     } else if (this.state.touched && value.trim().length > 50) {
       this.setState({
         invalidMessage: 'Должно быть не больше 50 символов',
@@ -80,7 +84,6 @@ class SearchForm extends Component {
         invalid: false
       })
     }
-
   }
 
   foundStripsHandler = (strips, value) => {
@@ -94,7 +97,6 @@ class SearchForm extends Component {
     } else {
       this.setState({ foundStrips: foundStrips })
     }
-
     console.log(foundStrips)
   }
   render() {
