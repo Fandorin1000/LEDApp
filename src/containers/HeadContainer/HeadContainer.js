@@ -46,7 +46,7 @@ class HeadContainer extends Component {
     this.props.onCloseAllModals()
   }
   render() {
-    const { isShowSideDrawer, bagArray } = this.props;
+    const { isShowSideDrawer, bagArray, strips } = this.props;
     const cssClassesCartIconBox = [classes.onlyMobile, classes.cartIconBox].join(' ');
     return (
       <div
@@ -73,7 +73,9 @@ class HeadContainer extends Component {
             src='https://led-stil.com/image/catalog/led/logo1.png'
             alt="led-stil logo elephant" />
         </div>
-        <SearchForm />
+        <div className={classes.onlyDesktop}>
+          <SearchForm strips={strips} />
+        </div>
         <DrawerToggle clicked={this.openSideDrawerHandler} />
         <NavigationItems isShowSideDrawer={isShowSideDrawer}>
           <NavigationItem link="/About">О компании</NavigationItem>
@@ -94,7 +96,8 @@ class HeadContainer extends Component {
 }
 const mapStateToProps = state => ({
   isShowSideDrawer: state.UIPage.isShowSideDrawer,
-  bagArray: state.bagPage.bagArray
+  bagArray: state.bagPage.bagArray,
+  strips: state.stripsPage.strips
 })
 const mapDispatchToProps = dispatch => ({
   onOpenSideDrawerHandler: () => dispatch(actions.openSideDrawer()),

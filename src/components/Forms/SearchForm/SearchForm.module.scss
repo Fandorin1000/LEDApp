@@ -41,6 +41,10 @@
         background: white;
         color: #00AFE2;
       }
+
+      &:disabled {
+        display: none;
+      }
     }
   }
 
@@ -58,8 +62,63 @@
     z-index: 100;
     background: #fff;
     color: black;
+    z-index: 5;
   }
 }
+
+.foundItems {
+  box-sizing: border-box;
+  position: absolute;
+  top: 105%;
+  border: 1px dashed red;
+  border-radius: 5px;
+  padding: 5px;
+  width: 100%;
+  transition: all .5s ease-out;
+  animation: animate .5s forwards;
+  transform: translateY(-100%);
+  z-index: 100;
+  background: #fff;
+  color: black;
+  overflow-y: auto;
+  max-height: 300px;
+
+  .foundItem {
+    display: flex;
+    z-index: 100000;
+    border-bottom: 1px solid black;
+    align-items: center;
+    padding: 5px 0;
+
+    .imgBox {
+      max-width: 50px;
+      display: flex;
+      align-items: center;
+
+      img {
+        width: 100%;
+        height: auto;
+      }
+    }
+
+    .nameBox {
+      display: flex;
+      align-items: center;
+
+      .nameBoxLinkElement {
+        color: blue;
+        line-height: 1;
+        font-size: 14px;
+        transition: all .3s ease-out;
+
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+}
+
 
 @keyframes animate {
   0% {

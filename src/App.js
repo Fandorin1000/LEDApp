@@ -15,9 +15,11 @@ import BagContainer from './containers/BagContainer/BagContainer';
 class App extends Component {
   // constructor(props) {
   //   super(props);
+
   // }
   async componentDidMount(e) {
-    const { bagArray } = this.props
+    const { bagArray } = this.props;
+    await this.props.onGetStrips()
     if (bagArray.length === 0) {
       await this.props.onGetProductsFromLS()
     }
@@ -25,7 +27,6 @@ class App extends Component {
       await this.props.onToggleIsShowSortList()
       await this.props.onToggleIsShowFilterList()
     }
-
   }
 
   closeAllModalsHandler = () => {
@@ -91,7 +92,8 @@ const mapDispatchToProps = dispatch => ({
   onCloseAllModals: () => dispatch(actions.closeAllModals()),
   onGetProductsFromLS: () => dispatch(actions.getProductsFromLS()),
   onToggleIsShowSortList: () => dispatch(actions.toggleIsShowSortList()),
-  onToggleIsShowFilterList: () => dispatch(actions.toggleIsShowFilterList())
+  onToggleIsShowFilterList: () => dispatch(actions.toggleIsShowFilterList()),
+  onGetStrips: () => dispatch(actions.getStripsRequest()),
 })
 export default compose(
   connect(mapStateToProps, mapDispatchToProps),

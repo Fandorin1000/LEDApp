@@ -12,8 +12,21 @@ import StripCommentsBox from '../../components/Strip/StripFooter/CommentsBox/Str
 import Auxiliary from '../../hoc/Auxiliary';
 import Spinner from '../../components/UI/Spinner/Spinner';
 class StripContainer extends Component {
-  componentDidMount() {
-    this.props.onGetStripRequest(this.props.match.params.stripId)
+  constructor(props) {
+    super(props);
+    this.state = {
+      currentStripId: null
+    }
+  }
+  async componentDidMount() {
+    await this.props.onGetStripRequest(this.props.match.params.stripId)
+    await this.setState({ currentStripId: this.props.match.params.stripId })
+  }
+  async componentDidUpdate() {
+    if (this.state.currentStripId !== this.props.match.params.stripId) {
+      await this.setState({ currentStripId: this.props.match.params.stripId })
+      await this.props.onGetStripRequest(this.props.match.params.stripId)
+    }
   }
   addToBagProductHandler = product => {
     const { bagArray } = this.props;

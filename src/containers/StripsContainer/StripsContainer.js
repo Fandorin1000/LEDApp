@@ -17,9 +17,6 @@ class StripsContainer extends Component {
       currentFilterArguments: []
     }
   }
-  async componentDidMount() {
-    await this.props.onGetStrips();
-  }
 
   addToCurrentFilterArgumentsNewPartHandler = (event) => {
     const argument = event.currentTarget.childNodes[0].textContent;
@@ -138,7 +135,6 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  onGetStrips: () => dispatch(actions.getStripsRequest()),
   onSortedStripsStartLowPrice: (strips) => dispatch(actions.sortedStripsStartLowPrice(strips)),
   onSortedStripsStartHighPrice: (strips) => dispatch(actions.sortedStripsStartHighPrice(strips)),
   onSortedStripsStartHighPower: (strips) => dispatch(actions.sortedStripsStartHighPower(strips)),
