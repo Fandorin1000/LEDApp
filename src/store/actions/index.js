@@ -30,7 +30,8 @@ export {
   toggleIsShowOrderSuccessModal,
   toggleIsWaitSendOrderData,
   setError,
-  toggleIsWaitSendNewRatingNumber
+  toggleIsWaitSendNewRatingNumber,
+  toggleIsShowSearchBox
 } from './UIAction';
 
 export {

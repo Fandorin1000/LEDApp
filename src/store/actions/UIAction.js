@@ -14,6 +14,7 @@ export const toggleIsShowFilterList = () => ({ type: actionTypes.TOGGLE_IS_SHOW_
 export const toggleIsShowOrderSuccessModal = (payload) => ({ type: actionTypes.TOGGLE_IS_SHOW_ORDER_SUCCESS_MODAL, payload })
 export const toggleIsWaitSendOrderData = (payload) => ({ type: actionTypes.TOGGLE_IS_WAIT_SEND_ORDER_DATA, payload })
 export const toggleIsWaitSendNewRatingNumber = (payload) => ({ type: actionTypes.TOGGLE_IS_WAIT_SEND_NEW_RATING_NUMBER, payload })
+export const toggleIsShowSearchBox = () => ({ type: actionTypes.TOGGLE_IS_SHOW_SEARCH_BOX })
 
 const toggleIsScrollActive = (isShow) => {
   const body = document.body;

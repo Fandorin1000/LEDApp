@@ -1,5 +1,6 @@
 .searchForm {
   position: relative;
+  max-width: 223px;
 
   .searchFormInner {
     display: flex;
@@ -14,6 +15,7 @@
       border-radius: 5px;
       outline: none;
       padding: 2px 47px 2px 5px;
+      max-width: 100%;
 
       &:hover,
       &:active,

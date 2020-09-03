@@ -19,11 +19,12 @@ class HeadContainer extends Component {
     }
   }
   componentDidMount() {
+    console.log()
     window.addEventListener('scroll', this.scrollObserver)
   }
   //scroll header fixed observer
   scrollObserver = () => {
-    if (window.scrollY > 140) {
+    if (window.scrollY > 140 && window.innerWidth > 1024) {
       this.setState({ fixed: true })
     } else {
       this.setState({ fixed: false })
@@ -47,7 +48,7 @@ class HeadContainer extends Component {
     this.props.onCloseAllModals()
   }
   render() {
-    const { isShowSideDrawer, bagArray, strips } = this.props;
+    const { isShowSideDrawer, bagArray, strips, isShowSearchBox } = this.props;
     const cssClassesCartIconBox = [classes.onlyMobile, classes.cartIconBox].join(' ');
     return (
       <div

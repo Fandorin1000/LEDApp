@@ -9,6 +9,7 @@ import { compose } from 'redux';
 import SortBox from '../../components/SortBox/SortBox';
 import FilterBox from '../../components/FilterBox/FilterBox';
 import FilterArguments from '../../components/FilterBox/FilterArguments/FilterArguments';
+import SearchForm from '../../components/Forms/SearchForm/SearchForm';
 
 class StripsContainer extends Component {
   constructor(props) {
@@ -17,7 +18,6 @@ class StripsContainer extends Component {
       currentFilterArguments: []
     }
   }
-
   addToCurrentFilterArgumentsNewPartHandler = (event) => {
     const argument = event.currentTarget.childNodes[0].textContent;
     const parent = event.currentTarget.parentNode;
@@ -63,8 +63,16 @@ class StripsContainer extends Component {
   toggleIsShowFilterListHandler = () => {
     this.props.onToggleIsShowFilterList()
   }
+  toggleIsShowSearchBoxHandler = () => {
+    this.props.onToggleIsShowSearchBox()
+  }
   render() {
-    const { isLoading, strips, isWaitSort, isShowSortList, isShowFilterList } = this.props;
+    const { isLoading,
+      strips,
+      isWaitSort,
+      isShowSortList,
+      isShowFilterList,
+      isShowSearchBox } = this.props;
     let stripsElement = null;
     if (isLoading) {
       stripsElement = <Spinner />
@@ -93,6 +101,10 @@ class StripsContainer extends Component {
         </h1>
         <div className={classes.stripsContainerBox}>
           <div className={classes.sortedBox}>
+            <div className={[classes.mobileOnly, classes.searchBox].join(' ')}>
+              <h2 onClick={this.toggleIsShowSearchBoxHandler}>{isShowSearchBox ? "Скрыть" : "Показать"} поиск</h2>
+              {isShowSearchBox && <SearchForm />}
+            </div>
             <FilterArguments
               filterElementOfArguments={this.state.currentFilterArguments}
               refreshFilterArguments={this.refreshFilterArgumentsHandler}
@@ -131,7 +143,8 @@ const mapStateToProps = state => ({
   isLoading: state.UIPage.isLoading,
   isWaitSort: state.UIPage.isWaitSort,
   isShowSortList: state.UIPage.isShowSortList,
-  isShowFilterList: state.UIPage.isShowFilterList
+  isShowFilterList: state.UIPage.isShowFilterList,
+  isShowSearchBox: state.UIPage.isShowSearchBox,
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -145,7 +158,8 @@ const mapDispatchToProps = dispatch => ({
   onFilteredNeutralLight: (strips) => dispatch(actions.filteredNeutralLight(strips)),
   onFilteredColdLight: (strips) => dispatch(actions.filteredColdLight(strips)),
   onToggleIsShowSortList: () => dispatch(actions.toggleIsShowSortList()),
-  onToggleIsShowFilterList: () => dispatch(actions.toggleIsShowFilterList())
+  onToggleIsShowFilterList: () => dispatch(actions.toggleIsShowFilterList()),
+  onToggleIsShowSearchBox: () => dispatch(actions.toggleIsShowSearchBox())
 })
 
 export default compose(

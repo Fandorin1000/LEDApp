@@ -100,7 +100,7 @@ class SearchForm extends Component {
     console.log(foundStrips)
   }
   render() {
-    const { strips } = this.props;
+    const { isShowSearchBox } = this.props;
     return (
       <div className={classes.searchFormBox}>
         <form
