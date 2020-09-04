@@ -3,8 +3,8 @@
   justify-content: space-between;
   align-items: center;
   position: relative;
-  border-bottom: 1px dotted grey;
   transition: all .3s ease-out;
+  box-shadow: none;
 
   .cartIconBox {
     width: 50px;
@@ -94,10 +94,12 @@
 
 @keyframes untransparent {
   0% {
-    background: transparent
+    background: transparent;
+    box-shadow: none;
   }
 
   100% {
-    background: #fff
+    background: #fff;
+    box-shadow: 0 15px 15px #fff;
   }
 }

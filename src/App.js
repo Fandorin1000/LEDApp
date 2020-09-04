@@ -45,6 +45,7 @@ class App extends Component {
     const AboutLazy = React.lazy(() => import('./containers/AboutContainer/AboutContainer'))
     const ContactsLazy = React.lazy(() => import('./containers/ContactsContainer/ContactsContainer'))
     const DeliveryLazy = React.lazy(() => import('./containers/DeliveryContainer/DeliveryContainer'))
+    const SearchLazy = React.lazy(() => import('./containers/SearchContainer/SearchContainer'))
     //lazy load end 
     return (
       <div className={classes.app}>
@@ -71,6 +72,9 @@ class App extends Component {
             <Route
               path="/bag"
               component={BagContainer} />
+            <Route
+              path="/search"
+              render={() => <Suspense fallback={lazyLoadingBox}><SearchLazy /></Suspense>} />
             <Route
               path="/order"
               render={() => (

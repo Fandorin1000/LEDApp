@@ -48,7 +48,7 @@ class HeadContainer extends Component {
     this.props.onCloseAllModals()
   }
   render() {
-    const { isShowSideDrawer, bagArray, strips, isShowSearchBox } = this.props;
+    const { isShowSideDrawer, bagArray, strips } = this.props;
     const cssClassesCartIconBox = [classes.onlyMobile, classes.cartIconBox].join(' ');
     return (
       <div

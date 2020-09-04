@@ -10,7 +10,7 @@ const scrollToTop = () => {
 }
 export const getStripsRequestSuccess = (payload) => ({ type: actionTypes.SET_STRIPS, payload });
 export const getStripRequestSuccess = (payload) => ({ type: actionTypes.SET_STRIP, payload });
-
+export const setFoundStripsAC = payload => ({ type: actionTypes.SET_FOUND_STRIPS, payload })
 
 export const getStripsRequest = () => async dispatch => {
   await dispatch(actions.clearError())

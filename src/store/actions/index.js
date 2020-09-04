@@ -11,7 +11,8 @@ export {
   filteredNeutralLight,
   filteredColdLight,
   setNewComment,
-  sendNewRatingNumberAction
+  sendNewRatingNumberAction,
+  setFoundStripsAC
 } from './stripsAction';
 
 export {

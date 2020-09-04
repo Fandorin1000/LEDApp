@@ -45,7 +45,9 @@
       }
 
       &:disabled {
-        display: none;
+        background: grey;
+        cursor: none;
+        color: black;
       }
     }
   }
@@ -65,6 +67,14 @@
     background: #fff;
     color: black;
     z-index: 5;
+
+    span {
+      border: none;
+
+      &:hover {
+        border: none
+      }
+    }
   }
 }
 

@@ -18,6 +18,7 @@ export const TOGGLE_IS_SHOW_SEARCH_BOX = "UIPage/TOGGLE_IS_SHOW_SEARCH_BOX";
 //STRIPS PAGE
 export const SET_STRIPS = "stripsPage/SET_STRIPS";
 export const SET_STRIP = "stripsPage/SET_STRIP";
+export const SET_FOUND_STRIPS = "stripsPage/SET_FOUND_STRIPS";
 
 //BAG PAGE
 export const ADD_TO_BAG_PRODUCT = "bagPage/ADD_TO_BAG_PRODUCT"

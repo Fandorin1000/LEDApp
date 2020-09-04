@@ -3,7 +3,7 @@ import classes from './SearchForm.module.scss';
 import { connect } from 'react-redux';
 import { NavLink, withRouter } from 'react-router-dom';
 import { compose } from 'redux';
-
+import * as actions from '../../../store/actions/index';
 
 
 class SearchForm extends Component {
@@ -33,19 +33,20 @@ class SearchForm extends Component {
       }, 1)
     }
   }
-  sendForm = (e) => {
-    e.preventDefault()
-    setTimeout(() => {
+  sendForm = async e => {
+    await e.preventDefault();
+    await this.props.onSetFoundStrips(this.state.foundStrips);
+    console.log(this.state.foundStrips)
+    await setTimeout(() => {
       this.setState({
         foundStrips: null
       })
     }, 100)
-    this.props.history.push('/search')
+    await this.props.history.push('/search')
   }
   inputChangeValueHandler = e => {
 
-    const value = e.target.value.toUpperCase();
-    console.log(value)
+    const value = e.target.value;
     if (this.state.touched === false) {
       this.setState({ touched: true })
     }
@@ -78,16 +79,16 @@ class SearchForm extends Component {
         invalid: true,
         foundStrips: null
       })
-    } else {
-      this.setState({
-        invalidMessage: '',
-        invalid: false
-      })
+    } else if (this.state.invalidMessage === 'Ничего не найдено!') {
+      return
     }
   }
 
   foundStripsHandler = (strips, value) => {
-    const foundStrips = strips.filter(item => item.name.includes(value));
+    const foundStrips = strips.filter(item =>
+      item.name.includes(value) ||
+      item.artikul.includes(value) ||
+      item.description.includes(value));
     if (foundStrips.length === 0) {
       this.setState({
         invalidMessage: 'Ничего не найдено!',
@@ -100,7 +101,6 @@ class SearchForm extends Component {
     console.log(foundStrips)
   }
   render() {
-    const { isShowSearchBox } = this.props;
     return (
       <div className={classes.searchFormBox}>
         <form
@@ -121,7 +121,8 @@ class SearchForm extends Component {
             <button
               disabled={
                 this.state.searchInputValue.length === 0 ||
-                this.state.invalidMessage.length > 0
+                this.state.invalidMessage.length > 0 ||
+                !this.state.foundStrips
               }
               type="submit">искать</button>
           </div>
@@ -170,7 +171,7 @@ const mapStateToProps = state => ({
   strips: state.stripsPage.strips,
 })
 const mapDispatchToProps = dispatch => ({
-  onSetFoundStrips: () => console.log('sd')
+  onSetFoundStrips: (foundStrips) => dispatch(actions.setFoundStripsAC(foundStrips))
 })
 //const mapDispatchToProps = dispatch => ({})
 export default

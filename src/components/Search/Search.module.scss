@@ -1,0 +1,43 @@
+.search {
+
+  min-height: 300px;
+
+  &__titleBox {
+    text-align: center;
+    margin: 20px auto;
+
+    a {
+      transition: all .3s ease-out;
+
+      &:hover {
+        color: skyblue;
+        text-shadow: 0 2px 3px skyblue;
+      }
+    }
+  }
+
+  .foundStripsElements {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+
+    a {
+      max-width: 300px;
+      max-height: 440px;
+      margin: 5px;
+      transition: .3s all ease-out;
+      text-decoration: none;
+      box-shadow: 0 0 2px black;
+
+      &:hover {
+        transform: scale(1.01);
+        box-shadow: 0 0 5px black;
+      }
+
+      div {
+        max-width: 100%;
+      }
+    }
+  }
+
+}
