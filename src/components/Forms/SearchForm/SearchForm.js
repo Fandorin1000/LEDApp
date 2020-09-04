@@ -36,7 +36,6 @@ class SearchForm extends Component {
   sendForm = async e => {
     await e.preventDefault();
     await this.props.onSetFoundStrips(this.state.foundStrips);
-    console.log(this.state.foundStrips)
     await setTimeout(() => {
       this.setState({
         foundStrips: null
@@ -86,8 +85,8 @@ class SearchForm extends Component {
 
   foundStripsHandler = (strips, value) => {
     const foundStrips = strips.filter(item =>
-      item.name.includes(value) ||
-      item.artikul.includes(value) ||
+      item.name.includes(value.toUpperCase()) ||
+      item.artikul.includes(value.toUpperCase()) ||
       item.description.includes(value));
     if (foundStrips.length === 0) {
       this.setState({
